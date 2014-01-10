@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+    <script language="javascript" type="text/javascript">
+        function ShowPrompt() {
+            var value1 = prompt('Enter first piece of data', '');
+            var value2 = prompt('Enter second piece of data', '');
+            if (value1 == '' || value2 == '')
+                alert("Either of the values is not correct");
+            alert(value1 + value2);
+            
+        }
+        
+
+    </script>
+<body>
+    <div>
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+                Create an HTML page.
+                o   Add JavaScript that includes 2 prompts for input from the user.
+                o   Add JavaScript to concatenate these 2 input values together and display the result in an alert box.
+        
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+    Solution:
+        
+                <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+               <!-- <input type="button" onclick="prompt('Enter any piece of data', '');" value="Click me..." />-->
+         </div>  
+</body>
+</html>

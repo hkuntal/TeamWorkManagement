@@ -1,0 +1,34 @@
+﻿@model WebAPISampleProject.Models.HTML5Model
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DisplayImageOnCanvas</title>
+    <script src="~/Scripts/JS/Canvas.js"></script>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+</head>
+<body>
+    <div>
+        
+        <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGP C/xhBQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YGARc5KB0XV+IA AAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAF1J REFUGNO9zL0NglAAxPEfdLTs4BZM4DIO4C7OwQg2JoQ9LE1exdlYvBBeZ7jq ch9//q1uH4TLzw4d6+ErXMMcXuHWxId3KOETnnXXV6MJpcq2MLaI97CER3N0 vr4MkhoXe0rZigAAAABJRU5ErkJggg==" alt="Red dot" />
+    </div>
+    <div>
+        @*        <img id="BAse64Image" src = "@Model.Base64EncodedImage"
+              alt="Image generated from base 64 encoded string"  />*@
+        <img id="forCanvas" src="http://localhost:50968/Images/Car.JPG" height="512" width="512"/>
+    </div>
+    <div>
+        <canvas id="dcmCanvas" height="800" width="800" style="border:1px solid black"></canvas>
+    </div>
+    
+    <script>
+        //DrawImage();
+        DrawImageFromZFP(); 
+    </script>
+</body>
+</html>

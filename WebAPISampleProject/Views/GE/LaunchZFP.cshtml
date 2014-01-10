@@ -1,0 +1,72 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LaunchZFP</title>
+    <script type="text/javascript">
+        function LunchZFP() {
+            //1.2.392.200036.9123.100.12.11.21137.20130107073832.3.5;1.2.392.200036.9123.100.12.11.21137.20130107072904.1.2;1.2.392.200036.9123.100.12.11.21137.20130107075701.6.1
+            var url = document.getElementById("idUrl").value;
+            var mode = document.getElementById("idMode").value;
+            //Get the SUIs
+            var Sui = document.getElementById("idSui").value;
+            var suis = Sui.split(';');
+            //Loop on the SUIs
+            for (var i = 0; i < suis.length; i++) {
+                var d = new Date();
+                var da= d.getDate();
+                var mo = d.getMonth() + 1; //Months are zero based
+                var y = d.getFullYear();
+                var h = d.getHours();
+                var m = d.getMinutes();
+                var s = d.getSeconds();
+                var mm = d.getMilliseconds();
+                var launchdate = y + "-" + mo + "-" + da + "T" + h + ":" + m + ":" + s + "." + mm;
+                var launchUrl = url + "?mode=inbound&requestInitiationTime=" + launchdate + "#sui=" + suis[i];
+                window.open(launchUrl, '_blank');
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    Server URL:
+                </td>
+                <td>
+                    <input id = idUrl type="text"/>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    Mode:
+                </td>
+                <td>
+                    <input id = idMode type="text"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   Enter SUI List separated by semi colon
+                </td>
+                <td>
+                    <input id = idSui type="text" size="100" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Launch" onclick="LunchZFP()"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

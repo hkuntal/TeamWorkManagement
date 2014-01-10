@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<style>
+    h2{background-color:coral}
+</style>
+
+<h2>Testing out KO Stuff</h2>
+<!-- Create some HTML Stuff --> 
+<div>
+    @*    <table style="width: 100%;">
+        <tr>
+            <td><span data-bind="text:Name" /></td>
+            <td>Hariom</td>
+            <td>Kuntal</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>*@
+    <p>First name: <strong data-bind="text: firstName"></strong></p>
+    <p>Last name: <strong data-bind="text: lastName"></strong></p>
+
+    <p>First name: <input data-bind="value: firstName" /></p>
+    <p>Last name: <input data-bind="value: lastName" /></p>
+</div>
+
+<table>
+    <thead>
+        <th>
+              
+        </th>
+    </thead>
+</table>
+
+<script src="~/Scripts/knockout-2.1.0.js"></script>
+<script src="~/Scripts/KnockOut/Models/EmployeeModel.js"></script>
+<script src="~/Scripts/KnockOut/Employee_KO.js"></script>
+
+
+
+
+
+

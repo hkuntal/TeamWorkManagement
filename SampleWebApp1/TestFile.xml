@@ -1,0 +1,18 @@
+﻿<essay id="UUID" version="5">
+  <cas>
+    <![CDATA[
+    … UIMA CAS XML (including raw text) …
+    ]]>
+  </cas>
+  <externalEssayId>101</externalEssayId>
+  <grades>
+    <grade metric="Metric" score="5.9"> 
+      <humanGrader user="Harioms" grade="6" given="06/23/2013 20:00:00"/>
+      <automatedGrader system="Microsoft Automatic Grader" grade="7.2" given="06/23/2013 20:00:00" confidence="3"/>
+    </grade>
+    <grade metric="Metric" score="6.8">
+      <humanGrader user="Kuntal" grade="4" given="06/23/2013 20:00:00"/>
+    </grade>
+  </grades>
+  <assignmentType>Medical</assignmentType>
+</essay>

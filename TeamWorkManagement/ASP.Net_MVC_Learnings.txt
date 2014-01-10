@@ -1,0 +1,8 @@
+1. You can have multiple forms in a single page with each form having its own Submit button. On click of the Submit button that particular form gets posted back.
+
+2. TempData is a dictionary that is available for storing data in Session
+
+3. Difference between return PartialView("Auction", auction); and return View("Auction", auction); is that View returns Layout + Content where as PartialView only returns the content and not the layout.
+Layout means the Master pages adn 
+
+4. 

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+    <script language="javascript" type="text/javascript">
+        function ShowPrompt() {
+            var productno = prompt('Enter a number for calculation of table', '');
+           
+            var control = document.getElementById("idAssignment5");
+            control.innerHTML = control.innerHTML + "<br>";
+            for (var i = 1; i <=20; i++) {
+                control.innerHTML = control.innerHTML + productno +" * " + i + " = " +productno*i + "<br>";
+            }
+
+          }
+    </script>
+<body>
+    <div id="idAssignment5">
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+            11.	Write a program in to find the multiplication table of the given number till 20.
+        
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+    Solution:
+        
+                <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+             <!-- <input type="button" onclick="prompt('Enter any piece of data', '');" value="Click me..." />-->
+             <span id="idSpan1"></span>
+         </div> 
+   
+</body>
+</html>

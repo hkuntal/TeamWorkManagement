@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <script language="javascript" type="text/javascript">
+        function ChangeBackGround(o) {
+            //Change the color of the clicked link to blue
+            o.style.backgroundColor = "lightskyblue";
+
+            //Change the color of all other links back to white
+            var input = document.getElementsByTagName('li');
+            for (var index = 0; index < input.length; index++) {
+                if (input[index] != o) {
+                    input[index].style.backgroundColor = "plum";
+                }
+            }
+        }
+    </script>
+<body style="background-color: plum">
+    <h4>List of Assignments</h4>
+<li onclick=ChangeBackGround(this)><a href="H1AssignmentNo1.html" target="b">Assignment# 1</a></li>
+<li onclick=ChangeBackGround(this)><a href="H1AssignmentNo2.html" target="b">Assignment# 2</a></li>
+<li onclick=ChangeBackGround(this)><a href="H1AssignmentNo3.html" target="b">Assignment# 3</a></li>
+<li onclick=ChangeBackGround(this)><a href="H1AssignmentNo4.html" target="b">Assignment# 4</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo5.html" target="b">Assignment# 5</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo6.html" target="b">Assignment# 6</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo7.html" target="b">Assignment# 7</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo8.html" target="b">Assignment# 8</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo9.html" target="b">Assignment# 9</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo10.html" target="b">Assignment# 10</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo11.html" target="b">Assignment# 11</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo12.html" target="b">Assignment# 12</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo13.html" target="b">Assignment# 13</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo14.html" target="b">Assignment# 14</a></li>
+    <li onclick=ChangeBackGround(this)><a href="H1AssignmentNo15.html" target="b">Assignment# 15</a></li>
+    
+</body>
+</html>

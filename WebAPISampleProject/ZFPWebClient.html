@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8">
+
+
+    <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+    <title></title>
+    <script type="text/javascript">
+
+        var webviewerproxy;
+        var viewerWindow;
+        var proxyTarget;
+
+        var WebProxyScriptElementName = 'WebProxyScriptElement';
+
+        function ButtonInitialize_onclick() //initialize
+        {
+            setStatusText("Disconnected");
+            reloadWebProxyScript();
+
+            // Wait for web proxy script to load
+            window.setTimeout(function () {
+                initializeViewerInProxyMode();
+            }, 5000);
+        }
+
+        function ButtonRow_onclick(strSuid, strPid) //view with accession number
+        {
+            QueryParameters.value = "pid=" + strPid;
+            return ButtonShowlist_onclick();
+        }
+
+        function ButtonShowlist_onclick() //showlist
+        {
+            if (webviewerproxy.IsConnected()) {
+                if (proxyTarget)
+                    proxyTarget.focus();
+                webviewerproxy.Execute("showlist&" + QueryParameters.value);
+                return;
+            }
+
+            alert("WebViewer Proxy is not yet ready to accept commands");
+        }
+
+        function ButtonViewAll_onclick() //viewall
+        {
+            if (webviewerproxy.IsConnected()) {
+                if (proxyTarget)
+                    proxyTarget.focus();
+                webviewerproxy.Execute("viewall&" + QueryParameters.value);
+                return;
+            }
+
+            alert("WebViewer Proxy is not yet ready to accept commands");
+        }
+
+        function ButtonView_onclick() //view
+        {
+            if (webviewerproxy.IsConnected()) {
+                if (proxyTarget)
+                    proxyTarget.focus();
+                webviewerproxy.Execute("view&" + QueryParameters.value);
+                return;
+            }
+
+            alert("WebViewer Proxy is not yet ready to accept commands");
+        }
+
+        function OnConnect() //event handler to handle onconnectionchange events
+        {
+            //webviewerproxy.Execute("showlist&pnm=a*");	 
+            // check if proxy was connected
+            if (webviewerproxy.IsConnected()) {
+                //if so, tell the user that the proxy is ready to be used
+                setStatusText("Connected");
+            }
+        }
+
+        function setStatusText(text) {
+            var status = document.getElementById("status");
+            status.innerHTML = text;
+        }
+
+        function getTarget() {
+            if (windowType.checked) {
+                viewerWindow = window.open("about:blank", "TestViewer", "width=1500,height=800,location=no,menubar=no,titlebar=no,left=150,top=150");
+                return viewerWindow;
+            }
+
+            return document.getElementById("frameWebViewer"); //frameWebViewer            
+        }
+
+        function getScriptName() {
+            var scriptName = "/Scripts/OpenAPI/WebViewerProxy.js";
+            if (installSvr.checked) {
+                scriptName = "/nocache/WebViewerProxy.js";
+                return scriptName;
+            }
+
+            return scriptName;
+        }
+
+        function locationHashChanged() {
+            alert("OpenAPI locationHashChanged " + location.hash);
+        }
+
+        function reloadWebProxyScript() {
+            removeExistingScript();
+
+            var serverBaseUrl = getServerBaseUrl();
+
+            var s = window.document.createElement('script');
+            s.src = serverBaseUrl + getScriptName();
+            s.id = WebProxyScriptElementName;
+            window.document.head.appendChild(s);
+        }
+
+        function removeExistingScript() {
+            var existingScript = window.document.getElementById(WebProxyScriptElementName);
+
+            if (existingScript) {
+                var parentNode = existingScript.parentNode;
+                parentNode.removeChild(existingScript);
+            }
+        }
+
+        function getServerBaseUrl() {
+            var serverUrl = TextServer.value;
+            var indexOfQ = serverUrl.indexOf("?");
+
+            if (indexOfQ >= 0)
+                serverUrl = serverUrl.substring(0, indexOfQ);
+
+            return serverUrl;
+        }
+
+        function initializeViewerInProxyMode() {
+            try {
+                webviewerproxy = new WebViewerProxy();
+            } catch (err) {
+                alert("Could not load Web Proxy API!: " + err.message);
+                return;
+            }
+
+            proxyTarget = getTarget();
+            webviewerproxy.onconnectionchange = OnConnect;
+            webviewerproxy.Initialize(proxyTarget, TextServer.value, TextUser.value, TextPassword.value, '');
+        }
+
+        window.onhashchange = locationHashChanged;
+
+    </script>
+    <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/document_iterator.js"></script>
+    <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/find_proxy.js"></script>
+    <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/get_html_text.js"></script>
+    <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/global_constants.js"></script>
+    <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/name_injection_builder.js"></script>
+    <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/number_injection_builder.js"></script>
+    <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/menu_injection_builder.js"></script>
+    <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/string_finder.js"></script>
+    <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/change_sink.js"></script>
+    <meta name="document_iterator.js">
+    <meta name="find_proxy.js">
+    <meta name="get_html_text.js">
+    <meta name="global_constants.js">
+    <meta name="name_injection_builder.js">
+    <meta name="number_injection_builder.js">
+    <meta name="menu_injection_builder.js">
+    <meta name="string_finder.js">
+    <meta name="change_sink.js">
+    <script src="http://localhost/ZFP/nocache/WebViewerProxy.js" id="WebProxyScriptElement"></script>
+</head>
+<body bgcolor="powderblue" style="width: 100%; height: 100%; margin: 0px">
+    <p>
+        <font color="black" size="5"><strong><em>Server:<input id="TextServer" value="http://localhost/ZFP">
+            <input type="radio" name="environmentType" value="install" id="installSvr" checked="true">Installed
+            <input type="radio" name="environmentType" value="dev" id="devEnvSvr">DevEnv</em></strong></font>
+    </p>
+    <font color="black" size="5">
+    <p>
+    </p><p>
+        <font color="black" size="5"><strong><em>Proxy Target:
+            <input type="radio" name="targetType" value="window" id="windowType" checked="true">Window
+            <input type="radio" name="targetType" value="iframe" id="iframeType">IFRAME</em></strong></font></p><font color="black" size="5">
+    <p>
+	</p><p>
+        <font color="black" size="5"><strong><em>User Name:<input id="TextUser" value=""></em></strong></font>
+		<font color="black" size="5"><strong><em>Password:<input id="TextPassword" value=""></em></strong></font></p>
+    <p>
+        <strong><em>Step1: Initialize&nbsp;</em></strong>
+        <input language="javascript" id="buttoninitialize" style="background-color: darkturquoise" onclick="return ButtonInitialize_onclick()" type="button" value="Initialize" name="buttoninitialize">
+    </p>
+    <p>
+        <em><font size="5"><strong>Step2: Enter query parameters&nbsp; </strong></font></em><em><font size="5">
+            <input id="QueryParameters" value="pnm=max*"></font></em></p>
+    <p>
+        <strong><em><font size="5">Step3a: Press Showlist&nbsp;
+            <input id="buttonshowlist" type="button" value="Showlist" name="buttonshowlist" language="javascript" onclick="return ButtonShowlist_onclick()" style="background-color: darkturquoise"></font></em></strong></p>
+    <p>
+        <strong><em><font size="5">Step3b: Press View All&nbsp;
+            <input id="buttonviewall" type="button" value="View All" name="buttonviewall" language="javascript" onclick="return ButtonViewAll_onclick()" style="background-color: darkturquoise"></font></em></strong></p>
+    <p>
+        <strong><em><font size="5">Step3c: Press View&nbsp;
+                        <input id="buttonview" type="button" value="View" name="buttonview" language="javascript" onclick="return ButtonView_onclick()" style="background-color: darkturquoise"></font></em></strong></p>
+    <p>
+        <strong><em><font size="5">Status: <span id="status">Disconnected</span></font></em></strong></p>
+    <p style="background-color: #bfffff">
+        </p><table border="1">
+            <tbody><tr>
+                <th>
+                    Patient Name
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    MRN
+                </th>
+                <th>
+                    Exam Date
+                </th>
+                <th>
+                    Modality
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Maxheim, Astrid
+                </td>
+                <td>
+                    38y
+                </td>
+                <td>
+                    Female
+                </td>
+                <td>
+                    8579293
+                </td>
+                <td>
+                    17-Aug-2010
+                </td>
+                <td>
+                    CT
+                </td>
+                <td>
+                    CT Thorax
+                </td>
+                <td>
+                    <button onclick="return ButtonRow_onclick('1.2.840.113619.6.95.31.0.3.4.1.3150.13.2559983', '8579293')">
+                        View Rad Images</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ill, Very
+                </td>
+                <td>
+                    22y
+                </td>
+                <td>
+                    Male
+                </td>
+                <td>
+                    1000026000
+                </td>
+                <td>
+                    24-Mar-2012
+                </td>
+                <td>
+                    CT
+                </td>
+                <td>
+                    Eventcode Radiology Studies - 2
+                </td>
+                <td>
+                    <button onclick="return ButtonRow_onclick('1.2.528.1.1001.1.960113006.200.2.19960306.125615749.1', '1000026000')">
+                        View Rad Images</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Avecedo, Emily
+                </td>
+                <td>
+                    14y
+                </td>
+                <td>
+                    Female
+                </td>
+                <td>
+                    T.545220...
+                </td>
+                <td>
+                    23-Jul-2011
+                </td>
+                <td>
+                    CR
+                </td>
+                <td>
+                    HOSSIM.Study.Study
+                </td>
+                <td>
+                    <button onclick="return ButtonRow_onclick('1.2.840.6926000.545220120419113612281.17.575', 'T.545220')">
+                        View Rad Images</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    WILKINS, CHARLES
+                </td>
+                <td>
+                    80y
+                </td>
+                <td>
+                    Female
+                </td>
+                <td>
+                    GE0514
+                </td>
+                <td>
+                    03-Mar-1995
+                </td>
+                <td>
+                    CT
+                </td>
+                <td>
+                    CT CHEST/ABD
+                </td>
+                <td>
+                    <button onclick="return ButtonRow_onclick('1.2.840.113674.514.212.200', 'GE0514')">
+                        View Rad Images</button>
+                </td>
+            </tr>
+        </tbody></table>
+        <iframe id="frameWebViewer" src="about:blank" frameborder="yes" style="width:100%;height:600px;display:block">
+        </iframe>
+    <p></p>
+
+
+</font></font>
+</body>
+<span id="skype_highlighting_settings" display="none" autoextractnumbers="1" hightlightingswitched="0"></span>
+<object id="skype_plugin_object" location.href="http://3.232.182.223:85/OpenAPITest/Example-Tester.html" location.hostname="3.232.182.223" width="0" height="0" type="application/x-vnd.skype.click2call.chrome.5.7.0" style="position: absolute; visibility: hidden; left: -100px; top: -100px;"></object>
+</html>

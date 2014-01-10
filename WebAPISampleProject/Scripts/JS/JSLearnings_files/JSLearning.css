@@ -1,0 +1,55 @@
+﻿body {
+}
+
+                table {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                
+                }
+                th {background-color:#ADD8E6;}
+                body
+                {
+                    font-size:75%;
+                    font-family:verdana,arial,'sans serif';
+                    background-color:#FFFFF0;
+                    color:#000080;
+                    margin:10px;
+                }
+                td {background-color:#ADD8A5;
+                    border-style:solid;
+                    border-width:1px thin;
+                    border-collapse: collapse;
+                }
+                span.data {
+                    font-size: larger;
+                    color:rgb(0,0,255);
+                }
+.code
+{
+    color: green;
+    font-family: fantasy;
+    font-style: italic;
+    font-size: 13;
+    padding: 10px;
+
+}
+.pdfText
+{
+    color: maroon;
+    font-family: fantasy;
+    font-style: italic;
+    font-size: 13;
+    padding: 10px;
+
+}
+ .code.descArea{
+    padding:10px;
+    background-color: lightgray;
+    border: black 1px solid;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+ div.showBorder{
+ border: 1px solid #f00 ;
+}

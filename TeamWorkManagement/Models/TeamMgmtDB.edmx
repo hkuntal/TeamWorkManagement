@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TeamMgmtDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TeamMgmtDBModelStoreContainer">
+          <EntitySet Name="LkpRole" EntityType="TeamMgmtDBModel.Store.LkpRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LkpStatus" EntityType="TeamMgmtDBModel.Store.LkpStatus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ReleaseDtls" EntityType="TeamMgmtDBModel.Store.ReleaseDtls" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TeamMembers" EntityType="TeamMgmtDBModel.Store.TeamMembers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WorkHistory" EntityType="TeamMgmtDBModel.Store.WorkHistory" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_TeamMembers_LkpRole" Association="TeamMgmtDBModel.Store.FK_TeamMembers_LkpRole">
+            <End Role="LkpRole" EntitySet="LkpRole" />
+            <End Role="TeamMembers" EntitySet="TeamMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkHistory_LkpStatus" Association="TeamMgmtDBModel.Store.FK_WorkHistory_LkpStatus">
+            <End Role="LkpStatus" EntitySet="LkpStatus" />
+            <End Role="WorkHistory" EntitySet="WorkHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkHistory_TeamMembers" Association="TeamMgmtDBModel.Store.FK_WorkHistory_TeamMembers">
+            <End Role="TeamMembers" EntitySet="TeamMembers" />
+            <End Role="WorkHistory" EntitySet="WorkHistory" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="LkpRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="LkpStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ReleaseDtls">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReleaseName" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ReleaseDesc" Type="varchar" MaxLength="50" />
+          <Property Name="ReleaseDate" Type="datetime" />
+          <Property Name="IsReleaseComplete" Type="bit" />
+        </EntityType>
+        <EntityType Name="TeamMembers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RoleId" Type="tinyint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="tinyint" Nullable="false" />
+          <Property Name="ObjectId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="FinishDate" Type="datetime" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <Association Name="FK_TeamMembers_LkpRole">
+          <End Role="LkpRole" Type="TeamMgmtDBModel.Store.LkpRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TeamMembers" Type="TeamMgmtDBModel.Store.TeamMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LkpRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeamMembers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkHistory_LkpStatus">
+          <End Role="LkpStatus" Type="TeamMgmtDBModel.Store.LkpStatus" Multiplicity="0..1" />
+          <End Role="WorkHistory" Type="TeamMgmtDBModel.Store.WorkHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LkpStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkHistory">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkHistory_TeamMembers">
+          <End Role="TeamMembers" Type="TeamMgmtDBModel.Store.TeamMembers" Multiplicity="1" />
+          <End Role="WorkHistory" Type="TeamMgmtDBModel.Store.WorkHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeamMembers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkHistory">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeamMgmtDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TeamMgmtDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="LkpRoles" EntityType="TeamMgmtDBModel.LkpRole" />
+          <EntitySet Name="LkpStatus" EntityType="TeamMgmtDBModel.LkpStatu" />
+          <EntitySet Name="ReleaseDtls" EntityType="TeamMgmtDBModel.ReleaseDtl" />
+          <EntitySet Name="TeamMembers" EntityType="TeamMgmtDBModel.TeamMember" />
+          <EntitySet Name="WorkHistories" EntityType="TeamMgmtDBModel.WorkHistory" />
+          <AssociationSet Name="FK_TeamMembers_LkpRole" Association="TeamMgmtDBModel.FK_TeamMembers_LkpRole">
+            <End Role="LkpRole" EntitySet="LkpRoles" />
+            <End Role="TeamMembers" EntitySet="TeamMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkHistory_LkpStatus" Association="TeamMgmtDBModel.FK_WorkHistory_LkpStatus">
+            <End Role="LkpStatus" EntitySet="LkpStatus" />
+            <End Role="WorkHistory" EntitySet="WorkHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkHistory_TeamMembers" Association="TeamMgmtDBModel.FK_WorkHistory_TeamMembers">
+            <End Role="TeamMembers" EntitySet="TeamMembers" />
+            <End Role="WorkHistory" EntitySet="WorkHistories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="LkpRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="TeamMembers" Relationship="TeamMgmtDBModel.FK_TeamMembers_LkpRole" FromRole="LkpRole" ToRole="TeamMembers" />
+        </EntityType>
+        <EntityType Name="LkpStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="WorkHistories" Relationship="TeamMgmtDBModel.FK_WorkHistory_LkpStatus" FromRole="LkpStatus" ToRole="WorkHistory" />
+        </EntityType>
+        <EntityType Name="ReleaseDtl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ReleaseName" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ReleaseDesc" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ReleaseDate" Type="DateTime" Precision="3" />
+          <Property Name="IsReleaseComplete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TeamMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RoleId" Type="Byte" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LkpRole" Relationship="TeamMgmtDBModel.FK_TeamMembers_LkpRole" FromRole="TeamMembers" ToRole="LkpRole" />
+          <NavigationProperty Name="WorkHistories" Relationship="TeamMgmtDBModel.FK_WorkHistory_TeamMembers" FromRole="TeamMembers" ToRole="WorkHistory" />
+        </EntityType>
+        <EntityType Name="WorkHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Byte" Nullable="false" />
+          <Property Name="ObjectId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="FinishDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="LkpStatu" Relationship="TeamMgmtDBModel.FK_WorkHistory_LkpStatus" FromRole="WorkHistory" ToRole="LkpStatus" />
+          <NavigationProperty Name="TeamMember" Relationship="TeamMgmtDBModel.FK_WorkHistory_TeamMembers" FromRole="WorkHistory" ToRole="TeamMembers" />
+        </EntityType>
+        <Association Name="FK_TeamMembers_LkpRole">
+          <End Role="LkpRole" Type="TeamMgmtDBModel.LkpRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TeamMembers" Type="TeamMgmtDBModel.TeamMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LkpRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeamMembers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkHistory_LkpStatus">
+          <End Role="LkpStatus" Type="TeamMgmtDBModel.LkpStatu" Multiplicity="0..1" />
+          <End Role="WorkHistory" Type="TeamMgmtDBModel.WorkHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LkpStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkHistory">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkHistory_TeamMembers">
+          <End Role="TeamMembers" Type="TeamMgmtDBModel.TeamMember" Multiplicity="1" />
+          <End Role="WorkHistory" Type="TeamMgmtDBModel.WorkHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeamMembers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkHistory">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeamMgmtDBModelStoreContainer" CdmEntityContainer="TeamMgmtDBEntities">
+          <EntitySetMapping Name="LkpRoles">
+            <EntityTypeMapping TypeName="TeamMgmtDBModel.LkpRole">
+              <MappingFragment StoreEntitySet="LkpRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LkpStatus">
+            <EntityTypeMapping TypeName="TeamMgmtDBModel.LkpStatu">
+              <MappingFragment StoreEntitySet="LkpStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReleaseDtls">
+            <EntityTypeMapping TypeName="TeamMgmtDBModel.ReleaseDtl">
+              <MappingFragment StoreEntitySet="ReleaseDtls">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReleaseName" ColumnName="ReleaseName" />
+                <ScalarProperty Name="ReleaseDesc" ColumnName="ReleaseDesc" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="IsReleaseComplete" ColumnName="IsReleaseComplete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamMembers">
+            <EntityTypeMapping TypeName="TeamMgmtDBModel.TeamMember">
+              <MappingFragment StoreEntitySet="TeamMembers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkHistories">
+            <EntityTypeMapping TypeName="TeamMgmtDBModel.WorkHistory">
+              <MappingFragment StoreEntitySet="WorkHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

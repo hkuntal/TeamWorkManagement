@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Annotation</title>
+</head>
+<body>
+    <div>
+        <ul id="rcSubAnnotationsMenu">
+    <li class="distance">
+        <a href="#img-operation-measure" title="Distance" />
+    </li>
+    <li class="angle" data-bind="css: {'disabled': (selectedViewport().series().isCineModeOn()) }">
+        <a href="#img-operation-angle" data-bind="css:{ 'contextMenuSelected' : viewmodel.selectedActionInToolbar()=='angle' }" title="@Labels.AngleMeasurement">
+            <div>
+            </div>@Labels.AngleMeasurement</a></li>
+    <li class="Ellipticalregion" data-bind="css: {'disabled': (selectedViewport().series().isCineModeOn()) }">
+        <a href="#img-operation-ellipticalregion"
+           data-bind="css:{ 'contextMenuSelected' : viewmodel.selectedActionInToolbar()=='ellipticalRegion' }"
+           title="@Labels.EllipticalRegion">
+            <div>
+            </div>@Labels.EllipticalRegion</a></li>
+    <li class="Ellipse" data-bind="css: {'disabled': (selectedViewport().series().isCineModeOn()) }">
+        <a href="#img-operation-oval"
+           data-bind="css:{ 'contextMenuSelected' : viewmodel.selectedActionInToolbar()=='ellipse' }"
+           title="@Labels.Ellipse">
+            <div>
+            </div>@Labels.Ellipse</a></li>
+    <li class="Freehand" data-bind="css: {'disabled': ( selectedViewport().series().isCineModeOn() )  }">
+        <a href="#img-operation-freehand"
+           data-bind="css:{ 'contextMenuSelected' : viewmodel.selectedActionInToolbar()=='freeHand' }" 
+           title="@Labels.ROI">
+            <div>
+            </div>@Labels.ROI</a></li>
+    <li class="Rectangle" data-bind="css: {'disabled': ( selectedViewport().series().isCineModeOn())  }">
+        <a href="#img-operation-rectangle"
+           data-bind="css:{ 'contextMenuSelected' : viewmodel.selectedActionInToolbar()=='rect' }" 
+           title="@Labels.Rectangle">
+            <div>
+            </div>@Labels.Rectangle</a></li>
+    <li class="Text" data-bind="css: {'disabled': (selectedViewport().series().isCineModeOn()) }">
+        <a href="#img-operation-text"
+           data-bind="css:{ 'contextMenuSelected' : viewmodel.selectedActionInToolbar()=='text' }"
+           title="@Labels.Text">
+            <div>
+            </div>@Labels.Text </a></li>
+    <li class="Pointer" data-bind="css: {'disabled': ( selectedViewport().series().isCineModeOn()) }">
+        <a href="#img-operation-pointer"
+         data-bind="css:{ 'contextMenuSelected' : viewmodel.selectedActionInToolbar()=='pointer' }"
+         title="@Labels.Arrow">
+            <div>
+            </div>@Labels.Arrow </a></li>
+    <li class="Shutter" data-bind="css: {'disabled': ( selectedViewport().series().isCineModeOn())  }">
+        <a href="#img-operation-shutter"
+           data-bind="css:{ 'contextMenuSelected' : viewmodel.selectedActionInToolbar()=='shutterRect' }"
+           title="@Labels.RectangleShutter">
+            <div>
+            </div>@Labels.RectangleShutter </a></li>
+</ul>
+    </div>
+</body>
+</html>

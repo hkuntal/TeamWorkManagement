@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "CheckContextMenu";
+}
+
+<h2>CheckContextMenu being tested by Hariom</h2>
+<div id="rcDiv">
+    <span><h2>Right Click Here !!</h2></span>
+     
+</div>
+<ul id="rcMenu" style="display: none">
+    <li>
+        <a href="http://google.com" title="Go to Google">
+            Google
+        </a></li>
+    @*Subgrouping of annotations icons*@
+    <li>
+        <a href="http://Yahoo.com" title="Go to Yahoo">
+            Yahoo
+        </a></li>
+
+</ul>
+<div class="context-menu-one box menu-1">
+    <strong>right click me</strong>
+</div>
+ @Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/Scripts/RightClickContext.js");

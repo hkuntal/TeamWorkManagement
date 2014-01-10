@@ -1,0 +1,77 @@
+
+<!-- Paste this code into an external JavaScript file named: nextPrevious.js  -->
+
+/* This script and many more are available free online at
+The JavaScript Source :: http://www.javascriptsource.com
+Created by: Solomon, the Sleuth :: http://www.freewebs.com/thesleuth/scripts/ */
+<script language="javascript" type="text/javascript">
+// List image names without extension
+var myImg= new Array(3)
+  myImg[0]= "p1";
+  myImg[1]= "p2";
+  myImg[2]= "PatientInHIE";
+  myImg[3]= "PatientInMPI";
+
+// Tell browser where to find the image
+myImgSrc = "/";
+
+// Tell browser the type of file
+myImgEnd = ".png"
+
+var i = 0;
+
+// Create function to load image
+function loadImg(){
+  document.imgSrc.src = myImgSrc + myImg[i] + myImgEnd;
+}
+
+// Create link function to switch image backward
+function prev(){
+  if(i<1){
+    var l = i
+  } else {
+    var l = i-=1;
+  }
+  document.imgSrc.src = myImgSrc + myImg[l] + myImgEnd;
+}
+
+// Create link function to switch image forward
+function next(){
+  if(i>2){
+    var l = i
+  } else {
+    var l = i+=1;
+  }
+  document.imgSrc.src = myImgSrc + myImg[l] + myImgEnd;
+}
+
+// Load function after page loads
+window.onload=loadImg;
+
+</script>
+
+<!-- Paste this code into the HEAD section of your HTML document.
+     You may need to change the path of the file.  -->
+
+<!--<script type="text/javascript" src="nextPrevious.js"></script>-->
+
+
+
+<!-- Paste this code into the BODY section of your HTML document  -->
+
+<div style="width:400px; height:300px; margin: auto;">
+<img name="imgSrc" id="imgSrc">
+</div>
+<!-- Controller -->
+<table width="400" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000; width:400px; margin: auto;">
+  <tr>
+    <td align="center"><a href="#" onClick="prev();"> «</a></td>
+    <td align="center"><a href="#" onClick="next();"> » </a></td>
+  </tr>
+</table>
+<p><div align="center">
+<font face="arial, helvetica" size"-2">Free JavaScripts provided<br>
+by <a href="http://javascriptsource.com">The JavaScript Source</a></font>
+</div><p>
+
+

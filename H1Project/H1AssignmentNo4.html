@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+     <script language="javascript" type="text/javascript">
+         function ShowPrompt() {
+             var value1 = prompt('What is your age?', '');
+             value1 = Number(value1);
+             var control = document.getElementById("idSpan1");
+             control.innerHTML = "<br>";
+             for (var i = 0; i < value1; i++) {
+                 control.innerHTML = control.innerHTML + (i+1)+". Happy Birthday to you !!" + "<br>";
+             }
+                 
+
+         }
+    </script>
+    <body>
+         <div>
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+                4. Prompt for age, and then write "Happy Birthday to you! " on its own line to the screen that number of times. Add the number of the iteration before the text. 
+                    example: 1. Happy Birthday to you! 
+                    2. Happy Birthday to you!
+        
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+    Solution:
+        
+                <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+             <!-- <input type="button" onclick="prompt('Enter any piece of data', '');" value="Click me..." />-->
+             <span id="idSpan1"></span>
+         </div>  
+     </body>
+</html>

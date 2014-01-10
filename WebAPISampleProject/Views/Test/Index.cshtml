@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div id="divAjaxCall">
+<input id="Submit1" type="submit" value="submit" onclick="MakeAjaxCallToServer()"/>
+<table>
+    <tr>
+        <td>
+            <span>Url:</span><input id="txtUrl" type="text" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>Data2BSent2Server</span><input id="txtData" type="text" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>Type (Get/Post)</span><input id="txtType" type="text" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>Output from the Server</span><span id="ResultfromServer">Test</span>
+        </td>
+    </tr>
+</table>
+    </div>
+@Scripts.Render("~/Scripts/TestDifferentFunctions.js");
+<script type="text/javascript">
+    var dt = new Date("2013-09-11 13:15:45.213");
+    var dt1 = new Date("2013-09-11 13:15:45.213");
+    alert(dt - dt1);
+</script>

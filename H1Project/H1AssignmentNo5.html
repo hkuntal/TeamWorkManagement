@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+     <script language="javascript" type="text/javascript">
+    function ShowPrompt() {
+        var firstName = prompt('What is your First Name?', '');
+        var lastName = prompt('What is your Last Name?', '');
+        var fullName = firstName + lastName;
+        var control = document.getElementById("idAssignment5");
+        control.innerHTML = control.innerHTML + "<br><h1>Hello " + fullName + " Welcome to my page !!</h1>";
+             
+         }
+    </script>
+    <body>
+         <div id="idAssignment5">
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+              5.	Variables, Prompts & Writing Dynamic Data 
+                    i.	Create variables for a first name, a last name, and a full name. Give them initial values. 
+                    ii.	Have a prompt that asks for the user's first name 
+                    iii.	Have a prompt that asks for the user's last name 
+                    iv.	Combine the two into the third variable 
+                    v.	Then write to the page "Hello (names they entered). Welcome to my page! " Get the spacing right. 
+                    (Later, we'll use a loop to check for nothing entered and if blank, ask again until user enters something.)
+
+        
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+    Solution:
+        
+                <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+             <!-- <input type="button" onclick="prompt('Enter any piece of data', '');" value="Click me..." />-->
+             <span id="idSpan1"></span>
+         </div>  
+       
+    </body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+    <script language="javascript" type="text/javascript">
+        function ShowPrompt() {
+            var value1 = prompt('What is your favorite flavor of ice cream out of these three - Choclate, ButterScotch, Vanilla?', '');
+            if(value1 == 'Choclate')
+                alert("Enjoy your Choclate incecream in Switzerland");
+            else if(value1 == 'ButterScotch')
+                alert("Enjoy your ButterScotch incecream in Finland");
+            else if (value1 == 'Vanilla')
+                alert("Enjoy your Vanilla incecream in Germany");
+            else 
+                alert("Sorry you entered an incorrect choice of icecream. Please try again.");
+            
+        }
+    </script>
+    <body>
+         <div>
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+        3.         Create an HTML page
+                    Add JavaScript that includes a prompt for a value from the user, e.g. "What is your favorite flavor of ice cream?"
+                    Use any form of an if statement (if/else/else if) to respond to this user input   
+
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+        <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+           </div>
+        
+    </body>
+</html>

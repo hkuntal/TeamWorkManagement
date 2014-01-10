@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="viewport-container viewquad viewport-container-left" data-bind="event: { mouseleave: function(data, event){onmouseleave($root.viewPorts()[0], event)}}">
+        <div class="viewport-window ui-droppable active" id="viewportwindow0" data-bind="css: { active: $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0 &amp;&amp; $root.selectedViewport().getRenderer().getCurrentSeriesNumber() !== -1 }" index="0" style="height: 285px;">
+            <div class="viewport-header" index="0">
+                <p>Viewport Header</p>
+            </div>
+            <div class="viewport-content" data-bind="click: function(data, event){onclick($root.viewPorts()[0], event)} " style="height: 285px;">
+                <div id="canvasDiv0" class="canvasDiv" style="border-width: 0px; height: 285px; width: 957px;">
+                    <canvas class="viewerCanvas stretchedCanvas" id="canvas0" width="957px" height="285px"></canvas>
+                    <div id="divSaveSVG0" style="display: none; position: relative; top: 100%;"></div>
+                    <svg id="svgShutter0" class="stretchedCanvas stackCanvasLayers" style="overflow: hidden; top: -100%;" height="285" width="957">
+                        <g id="svgShuttergPan0" transform="matrix(1 0 0 1 0 0)">
+                            <g id="svgStuttergFlip0" transform="matrix(1 0 0 1 0 0)">
+                                <g id="svgShuttergRotate0" transform="matrix(1 0 0 1 0 0)">
+                                    <g id="svgShuttergZoom0" transform="translate( 0,0) scale(1)">
+                                        <g id="svgDicomShutter0" class="shutterBack" data-bind="with: $root.viewPorts()[0].series().selectedImage().frames().selectedFrame().dicomShutter()">
+                                            <g id="svgDicomgShutter0" fill-rule="evenodd" fill="black" data-bind="style: { 'fill-opacity': 1 }, visible: isVisible" class="shutterBack" style="fill-opacity: 1;">
+<path id="svgDicomShutterRect0" stroke="black" stroke-width="3px" data-bind="attr: { d:rectangularPath },  style: {strokeWidth:$root.viewPorts()[0].series().strokeWidthOfShutterBackGround}" style="stroke-width: 2px;"></path>}
+<path id="svgDicomShutterCir0" stroke="black" stroke-width="3px" data-bind="attr: { d:circularPath },  style: {strokeWidth:$root.viewPorts()[0].series().strokeWidthOfShutterBackGround}" style="stroke-width: 2px;"></path>}</g>
+                                            <g id="svgShutterElementg0" data-bind="template: {name: $root.getTemplate,foreach:  $root.viewPorts()[0].series().selectedImage().frames().selectedFrame().dicomShutterBoundary().items, templateEngine: SVGTemplateEngine}"></g>
+                                        </g>
+                                        <g id="svgShuttergRects0" class="shutterBack" data-bind="with: $root.viewPorts()[0].series().selectedImage().frames().selectedFrame().shutterRectangle()"></g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g></svg><svg class="viewerCanvas stretchedCanvas stackCanvasLayers" id="svgCrossRefElement0" width="512" height="512" style="background: rgba(255,255,255,0.0000000001); overflow: hidden; top: -200%;" index="0" data-bind="with: viewPorts()[0]"><g id="svgCrossRefgPan0" transform="matrix(1 0 0 1 0 0)"><g id="svgCrossRefgFlip0" transform="matrix(1 0 0 1 0 0)"><g id="svgCrossRefgRotate0" transform="matrix(1 0 0 1 0 0)"><g id="svgCrossRefgZoom0" transform="translate( 0,0) scale(1)"><g id="svgCrossRefg0" data-bind="visible: $root.isCrossRefOn(), template: {name: $root.getTemplate, foreach: crossRefLines(), templateEngine: SVGTemplateEngine}"></g>
+                        </g>
+                        </g>
+                        </g>
+                        </g></svg><div id="annotationDiv0" class="stretchedCanvas stackCanvasLayers overlays-container mini-mode" data-bind="with:$root.viewPorts()[0].series().selectedImage()" style="top: -300%;">
+                            <div id="overlay-top-left0" class="overlays-group overlays-demo-container" data-bind="css: {&quot;overlays-group-selected&quot; : isTouchDevice &amp;&amp; $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0}">
+                                <div id="manualCineIndicator0" class="overlays-subgroup overlays-demo-patient overlays-left" data-bind="visible:!$root.viewPorts()[0].series().isMultiSliceCineStopped() &amp;&amp; !isTouchDevice" style="display: none">Cine</div>
+                                <div id="globalStackIndicator0" class="overlays-subgroup overlays-demo-patient overlays-left" data-bind="visible: $root.isOverlayActive() &amp;&amp; sopId() &amp;&amp; overlayInfo().isOverlayInfoRetrieved &amp;&amp; $root.viewPorts()[0].isGlobalStackApplied &amp;&amp; $root.viewPorts()[0].studyGuid" style="display: none">GLOBAL STACK</div>
+                                <div id="demographicInfo0" class="overlays-subgroup overlays-demo-patient overlays-left" data-bind="visible:$root.isOverlayActive, text:overlayInfo().demographicInfo">MONO2_NoPixSpaceInfo_8bit_Signed (F/71y)</div>
+                                <div id="studyDescription0" class="overlays-subgroup overlays-demo-patient overlays-left" data-bind="visible:$root.isOverlayActive, text:overlayInfo().studyDescription">TB BONE_TB_DUAL</div>
+                                <div id="serialNo0" class="overlays-subgroup overlays-demo-patient overlays-left" data-bind="visible:$root.isOverlayActive, text: overlayInfo().serialNumber">Ser:1</div>
+                                <div id="imageNo0" class="overlays-subgroup overlays-demo-patient overlays-left" data-bind="visible:$root.isOverlayActive, text: overlayInfo().imageNumber">Im:2</div>
+                                <!-- ko if: isTouchDevice -->
+                                <!-- /ko -->
+                                <!-- ko ifnot: isTouchDevice -->
+                                <div id="imageComments0" data-toggle="tooltip" data-placement="bottom_right_m" class="overlays-subgroup overlays-demo-patient overlays-left" data-bind="visible:$root.isOverlayActive, text:overlayInfo().ImageComments,  attr : { &quot;data-original-title&quot; : overlayInfo().ImageComments } ,css :{ commentsEllipsis : showEllipsis()}" data-original-title=""></div>
+                                <!-- /ko -->
+                            </div>
+                            <div id="overlay-top-right0" class="overlays-group overlays-timeline-container" data-bind="visible:$root.isOverlayActive, css: {&quot;overlays-group-selected&quot; : isTouchDevice &amp;&amp; $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0}">
+                                <div id="ComparisonLabel0" class="overlays-comparison-container" data-bind="text:$root.getIndicatorForStudyBySopId(sopId(), $root.viewPorts()[0]), visible: sopId() &amp;&amp; overlayInfo().isOverlayInfoRetrieved">Primary</div>
+                                <div id="studyDateOverlayBackground0" class="overlays-subgroup overlays-studydate-container" data-bind="text: overlayInfo().timeLine">17-Mar-1995</div>
+                            </div>
+                            <div id="seriesSelectorPlaceHolder0" class="seriesSelectorPlaceHolder"></div>
+                            <div id="overlay-bottom-left0" class="overlays-group overlays-scanning-container" data-bind="visible:$root.isOverlayActive, css: {&quot;overlays-group-selected&quot; : isTouchDevice &amp;&amp; $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0}">
+                                <div id="lossy-overlay0" class="overlays-subgroup overlays-scanning-manufacturer overlays-left" data-bind="visible: ($root.viewPorts()[0].series().isLossy() &amp;&amp; $root.isOverlayActive) ,text: $root.viewPorts()[0].series().selectedImage().compressionRatio() " style="display: none;">Lossy 20 : 1</div>
+                                <div id="manufacturerModel0" class="overlays-subgroup overlays-scanning-manufacturer overlays-left"></div>
+                                <div id="protocolName0" class="overlays-subgroup overlays-scanning-manufacturer overlays-left"></div>
+                                <div id="FOV0"></div>
+                                <div id="reconDiameter0" class="overlays-subgroup overlays-scanning-manufacturer overlays-left" data-bind="text: overlayInfo().DFOV"></div>
+                                <div id="kVmA0" class="overlays-subgroup overlays-scanning-manufacturer overlays-left" data-bind="text: overlayInfo().kVmA"></div>
+                                <div id="tracer0"></div>
+                                <div id="exposureTime0" class="overlays-subgroup overlays-scanning-manufacturer overlays-left" data-bind="text: overlayInfo().exposureTime"></div>
+                                <div id="acquiringTime0"></div>
+                                <div id="atenuationCorrection0"></div>
+                                <div id="filterType0"></div>
+                                <div id="STSP0" class="overlays-subgroup overlays-scanning-manufacturer overlays-left" data-bind="text: overlayInfo().STSP"></div>
+                                <div id="anodeTypeFilterType0"></div>
+                                <div id="reconMethod0"></div>
+                            </div>
+                            <div id="overlay-bottom-right0" class="overlays-group overlays-presentation-container" data-bind="visible:$root.isOverlayActive, css: {&quot;overlays-group-selected&quot; : isTouchDevice &amp;&amp; $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0}">
+                                <div id="zoom0" class="overlays-subgroup overlays-presentation-zoom overlays-right" data-bind="if:sopId() &amp;&amp; overlayInfo().isOverlayInfoRetrieved">
+                                    <div id="zoomImage0" class="overlays-detail overlays-presentation-zoom-image overlays-left" data-bind="visible:sopId() &amp;&amp; overlayInfo().isOverlayInfoRetrieved" style="">
+                                        <div class="overlays-thumbnail overlays-zoom-thumbnail"></div>
+                                    </div>
+                                    <div id="zoomDetail0" class="overlays-detail overlays-presentation-zoom-level" data-bind="text: $root.viewPorts()[0].series().zoomDisplayed()">0.1</div>
+                                </div>
+                                <div id="WWWL0" class="overlays-subgroup overlays-presentation-windowlevel overlays-right" data-bind="if:sopId() &amp;&amp; overlayInfo().isOverlayInfoRetrieved">
+                                    <div id="WWWLImage0" class="overlays-detail overlays-presentation-windowlevel-image overlays-left" data-bind="visible:sopId() &amp;&amp; overlayInfo().isOverlayInfoRetrieved" style="">
+                                        <div class="overlays-thumbnail overlays-windowlevel-thumbnail"></div>
+                                    </div>
+                                    <div id="WWWLDetails0" class="overlays-detail overlays-presentation-window-level" data-bind="text: $root.viewPorts()[0].series().WWWL()">WL:-1 - WW:255</div>
+                                </div>
+                            </div>
+                            <div id="topOrientation0" class="orientation-div orientation-top" data-bind="text: topOrientation(), css: {&quot;orientation-div-selected&quot; : isTouchDevice  &amp;&amp; $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0}"></div>
+                            <div id="leftOrientation0" class="orientation-div orientation-left" data-bind="text: leftOrientation(), css: {&quot;orientation-div-selected&quot; : isTouchDevice &amp;&amp; $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0}"></div>
+                            <div id="rightOrientation0" class="orientation-div orientation-right" data-bind="text: rightOrientation(), css: {&quot;orientation-div-selected&quot; : isTouchDevice &amp;&amp; $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0}"></div>
+                            <div id="bottomOrientation0" class="orientation-div orientation-bottom" data-bind="text: bottomOrientation(), css: {&quot;orientation-div-selected&quot; : isTouchDevice &amp;&amp; $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0}"></div>
+                        </div>
+                    <svg class="viewerCanvas stretchedCanvas stackCanvasLayers" id="svgElement0" width="957" height="285" style="background: rgba(255,255,255,0.0000000001); overflow: hidden; top: -400%;" index="0" data-bind="event:{mousedown: function(data,event){onmousedown($root.viewPorts()[0],event)},mouseup: function(data,event){onmouseup($root.viewPorts()[0],event)},mouseover: function(data, event){onmouseover($root.viewPorts()[0])},dblclick: function(data, event){ondblclick($root.viewPorts()[0], event)},mousewheel: function(data, event){onmousescroll($root.viewPorts()[0], event)}},with: viewPorts()[0].series()">
+                        <g id="svgElementgPan0" transform="matrix(1 0 0 1 0 0)">
+                            <g id="svgElementgFlip0" transform="matrix(1 0 0 1 0 0)">
+                                <g id="svgElementgRotate0" transform="matrix(1 0 0 1 0 0)">
+                                    <g id="svgElementgZoom0" transform="translate( 0,0) scale(1)">
+                                        <g id="svgElementg0" data-bind="template: {name: $root.getTemplate,foreach: selectedImage().frames().selectedFrame().annotations().items, templateEngine: SVGTemplateEngine}"></g>
+                                        <g id="G1" data-bind="template: {name: $root.getTemplate,foreach: selectedImage().frames().selectedFrame().shutterRectangle(), templateEngine: SVGTemplateEngine}"></g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g><g id="svgScaleMarkerg0" data-bind="visible:viewmodel.isOverlayActive() &amp;&amp; viewmodel.viewPorts()[0].isMarkerVisible(),template: {   name: $root.getTemplate,foreach: $root.viewPorts()[0].scaleMarker(), templateEngine: SVGTemplateEngine,afterRender: $root.applyMidMarkers                       }" style="display: none;"></g><text class="scaleMarkerText" data-bind="attr:{x:viewmodel.viewPorts()[0].markerBottomX, y:viewmodel.viewPorts()[0].markerBottomY},visible:viewmodel.isOverlayActive() &amp;&amp; viewmodel.viewPorts()[0].isMarkerVisible()" style="display: none;">mm</text>
+                        <rect id="StudyDateOverlay0" class="svgOverlay" ontouchstart="viewmodel.showSeriesSelector(0)" style="position: absolute; fill-opacity: 0; fill: #000000; stroke: none; cursor: pointer;" data-bind="click: function(data, event) { $root.showSeriesSelectorFromTimeline(0)}, event: { mouseover:function(data, event){ viewmodel.interactiveOverlay().emphasizeInteractiveOverlay(data, event,'studyDate')}, mouseout:function(data, event){ viewmodel.interactiveOverlay().deEmphasizeInteractiveOverlay(data, event,'studyDate')} }, visible:$root.isOverlayActive()" width="64" height="15" x="891" y="17"></rect>
+                        <text id="kiOverlay0" class="overlayStudyDate" text-anchor="end" data-bind="attr:{x:svgWidth()-7, y:svgHeight()-45}, text: globalKeyImageLabel, visible:isKin() || isSignificantCollection(), style: {fill: isTouchDevice ?  $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0 ? &quot;lightgray&quot; : &quot;gray&quot; : &quot;lightgray&quot; , &quot;font-size&quot;:  isTouchDevice ?  $root.selectedViewport().getRenderer().getCurrentViewportIndex() == 0 ? &quot;13px&quot; : &quot;12px&quot; : &quot;12px&quot;}" style="opacity: 0.75; display: none; fill: #d3d3d3; font-size: 12px;" x="950" y="240">Key Image</text>
+                        <rect id="imageCommentsOverlay0" class="svgOverlay" ontouchstart="viewmodel.interactiveOverlay().showHideCommentsTooltip(0)" style="position: absolute; fill-opacity: 0; fill: #000000; stroke: none; cursor: pointer;" data-bind="click:function(data){viewmodel.interactiveOverlay().showHideCommentsTooltip(0)},event: { mouseover:function(data, event){ viewmodel.interactiveOverlay().emphasizeInteractiveOverlay(data, event,'imageComments')}, mouseout:function(data, event){ viewmodel.interactiveOverlay().deEmphasizeInteractiveOverlay(data, event,'imageComments')} },visible:$root.isOverlayActive() &amp;&amp; !$root.viewPorts()[0].series().isCineModeOn() &amp;&amp; !$root.viewPorts()[0].isBusy()" width="4" height="0" x="0" y="60"></rect>
+                        <rect id="zoomUsingOverlay0" class="svgOverlay" style="position: absolute; fill-opacity: 0; fill: #000000; stroke: none; cursor: pointer;" data-bind="click:function(data){viewmodel.interactiveOverlay().setToolbarFromOverlay('zoom')},event: { mouseover:function(data, event){ viewmodel.interactiveOverlay().emphasizeInteractiveOverlay(data, event,'zoom')}, mouseout:function(data, event){ viewmodel.interactiveOverlay().deEmphasizeInteractiveOverlay(data, event,'zoom')} },visible:$root.isOverlayActive()" width="31" height="19" x="924" y="245"></rect>
+                        <rect id="windowLevelUsingOverlay0" class="svgOverlay" style="position: absolute; fill-opacity: 0; fill: #000000; stroke: none; cursor: pointer;" data-bind="click:function(data){viewmodel.interactiveOverlay().setToolbarFromOverlay('windowLevel')},event: { mouseover:function(data, event){ viewmodel.interactiveOverlay().emphasizeInteractiveOverlay(data, event,'windowlevel')}, mouseout:function(data, event){ viewmodel.interactiveOverlay().deEmphasizeInteractiveOverlay(data, event,'windowlevel')} },visible:$root.interactiveOverlay().isInteractiveWindowLevelEnabled()" width="91" height="19" x="864" y="264"></rect>
+                        <rect id="scrollUsingOverlay0" class="svgOverlay" style="position: absolute; fill-opacity: 0; fill: #000000; stroke: none; cursor: pointer;" data-bind="click:function(data){viewmodel.interactiveOverlay().setToolbarFromOverlay('scroll')},event: { mouseover:function(data, event){ viewmodel.interactiveOverlay().emphasizeInteractiveOverlay(data, event,'scroll')}, mouseout:function(data, event){ viewmodel.interactiveOverlay().deEmphasizeInteractiveOverlay(data, event,'scroll')} },visible:$root.isOverlayActive() &amp;&amp; !$root.viewPorts()[0].series().isCineModeOn() &amp;&amp; !$root.viewPorts()[0].isBusy()" width="25" height="30" x="0" y="30"></rect>
+                        <rect id="lossyOverlay0" class="svgOverlay" ontouchstart="viewmodel.renderLossyToLossless(0)" style="position: absolute; fill-opacity: 0; fill: #000000; stroke: none; cursor: pointer; display: none;" data-bind="click: function(data, event) { $root.renderLossyToLossless(0)}, event: { mouseover:function(data, event){ viewmodel.interactiveOverlay().emphasizeInteractiveOverlay(data, event,'lossy')}, mouseout:function(data, event){ viewmodel.interactiveOverlay().deEmphasizeInteractiveOverlay(data, event,'lossy')} }, visible:$root.isOverlayActive() &amp;&amp; $root.viewPorts()[0].series().isLossy() &amp;&amp; !($root.viewPorts()[0].series().isTomo()) &amp;&amp; !($root.viewPorts()[0].series().isCineModeOn()) &amp;&amp; $root.viewPorts()[0].series().isTouchCompatibleResolution " width="29" height="45" x="0" y="281"></rect>
+                    </svg><div id="annotationDiv"></div>
+                    <div id="annotationDivBottom"></div>
+                    <div id="cine-overlay" data-bind="visible:$root.viewPorts()[0].isBusy(),event:{mouseup: function(data,event){mouseupOnLoading($root.viewPorts()[0],event)}}" style="display: none;">
+                        <div id="cine-overlay-child">
+                            <center><div id="floatingBarsG"><div class="blockG" id="rotateG_01"></div><div class="blockG" id="rotateG_02"></div><div class="blockG" id="rotateG_03"></div><div class="blockG" id="rotateG_04"></div><div class="blockG" id="rotateG_05"></div><div class="blockG" id="rotateG_06"></div><div class="blockG" id="rotateG_07"></div><div class="blockG" id="rotateG_08"></div></div></center>
+                        </div>
+                    </div>
+                    <div id="cine-overlay-for-message" data-bind="visible:$root.viewPorts()[0].isDiagnosticMsgVisible(window),event:{mouseup: function(data,event){mouseupOnLoading($root.viewPorts()[0],event)}}" style="display: none;">
+                        <div id="cine-overlay-child-for-message">
+                            <center><div id="cine-overlay-text">Not for diagnostic use</div></center>
+                        </div>
+                    </div>
+                    <div id="hotzoneforslider0" class="hotzoneforslider" data-bind="visible:isTouchDevice &amp;&amp; !viewmodel.selectedViewport().series().isKin() &amp;&amp; viewmodel.enableHotZones() &amp;&amp; $root.viewPorts()[0].series().isMultiSliceCineStopped()" style="display: none;"></div>
+                    <div id="hotzoneforScroll0" class="hotzoneforScroll" data-bind="visible:isTouchDevice &amp;&amp; !viewmodel.selectedViewport().series().isKin() &amp;&amp; viewmodel.enableHotZones() &amp;&amp; $root.viewPorts()[0].series().isMultiSliceCineStopped()" style="display: none;"></div>
+                    <div id="sliderforscroll0" style="display: none;" class="sliderforscroll" data-bind="jqSlider: $root.viewPorts()[0].percent, jqOptions: { min: 1, value: 1, step: 1 }, visible:$root.viewPorts()[0].series().isMultiSliceCineStopped() &amp;&amp; $root.viewPorts()[0].isSliderVisible"></div>
+                    <div class="sliderforscrollval" id="imageNumberDiv0" data-bind="visible:$root.viewPorts()[0].series().isMultiSliceCineStopped() &amp;&amp; $root.viewPorts()[0].isImageNumberVisible" style="display: none;"><span class="sliderValVerticalAlign">Im: </span><span id="sliderValue0" class="sliderValVerticalAlign">1</span></div>
+                    <div class="cine-toolbar" data-bind="visible:!$root.viewPorts()[0].isBusy() &amp;&amp; $root.viewPorts()[0].cineControlVisible &amp;&amp; $root.viewPorts()[0].cineControlActive" style="display: none;">
+                        <div id="div-cineloop" class="cineloop-play" data-bind="css: {'cineloop-pause': $root.viewPorts()[0].series().isCineModeOn}">
+                            <div id="img-operation-cine-fastrev" data-bind="click:function(data){$root.viewPorts()[0].cineControlCommand('first');}"></div>
+                            <div id="img-operation-cine-rev" data-bind="click:function(data){$root.viewPorts()[0].cineControlCommand('prev');}"></div>
+                            <div id="img-operation-cine-play" data-bind="click:function(data){$root.viewPorts()[0].cineControlCommand('play');}"></div>
+                            <div id="img-operation-cine-frwd" data-bind="click:function(data){$root.viewPorts()[0].cineControlCommand('next');}"></div>
+                            <div id="img-operation-cine-fastfrwd" data-bind="click:function(data){$root.viewPorts()[0].cineControlCommand('last');}"></div>
+                        </div>
+                        <div class="cineloop-slider">
+                            <div class="slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="0"><a href="#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 49.152542372881356%;"></a></div>
+                            <div class="slideVal"><span id="slideAmt"></span>fps<span id="achivedFPS"></span></div>
+                        </div>
+                    </div>
+                    <div class="kin-note" data-bind="visible: $root.viewPorts()[0].series().isKin" style="display: none;">
+                        <div class="kin-note-header">
+                            <div class="kin-note-header-content">
+                                <div class="note-label-icon-parent">
+                                    <div class="note-label-icon"></div>
+                                </div>
+                                <div class="notes-label-text-parent">
+                                    <div class="notes-label-text">Notes</div>
+                                </div>
+                                <div class="note-filler"></div>
+                            </div>
+                            <div class="note-header-filler"></div>
+                        </div>
+                        <div id="note-content-container" class="mCustomScrollbar _mCS_1">
+                            <div class="mCustomScrollBox" id="mCSB_1" style="position: relative; height: 100%; overflow: hidden; max-width: 100%;">
+                                <div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
+                                    <!-- ko if: $root.viewPorts()[0].series().isKin() && $root.viewPorts()[0].series().connectionProxy -->
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: $root.viewPorts()[0].series().isKin() -->
+                                    <div id="note-content"></div>
+                                    <!-- /ko -->
+                                </div>
+                                <div class="mCSB_scrollTools" style="position: absolute; display: none;">
+                                    <div class="mCSB_draggerContainer" style="position: relative;">
+                                        <div class="mCSB_dragger" style="position: absolute; top: 0px;">
+                                            <div class="mCSB_dragger_bar" style="position: relative;"></div>
+                                        </div>
+                                        <div class="mCSB_draggerRail"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

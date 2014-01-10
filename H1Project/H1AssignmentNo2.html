@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+    <script language="javascript" type="text/javascript">
+        function ShowPrompt() {
+            var value1 = prompt('Enter the first integer value', '');
+            var value2 = prompt('Enter the second integer value', '');
+            var val1 = Number(value1);
+            var val2 = Number(value2);
+            alert("The sum of the numbers is: " + (val1 + val2));
+        }
+        </script>
+    <body style="background-color: khaki">
+        <div>
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+        Create an HTML page.
+        o   2. Add JavaScript that includes 2 prompts for integer values from the user.
+        o    Add JavaScript to add these 2 values together and display the result in an alert box.
+        o   You must ADD the values together - don't substitute other mathematical operations such as subtraction, multiplication, or division.
+
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+        <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+           </div>
+    </body>
+</html>

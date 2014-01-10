@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+    <script language="javascript" type="text/javascript">
+        function ShowPrompt() {
+            var productno = prompt('Enter the product number?', '');
+            var qSold = prompt('Enter the quantity sold?', '');
+            var total = "";
+            var price;
+            switch (productno) {
+                case "1":
+                    price = 22.5;
+                    break;
+                case "2":
+                    price = 44.5;
+                    break;
+                case "3":
+                    price = 9.98;
+                    break;
+                default:
+                    price = 0;
+                    break;
+            }
+            
+            
+            var control = document.getElementById("idAssignment5");
+            if (price != 0) {
+                total = price * qSold;
+                control.innerHTML = control.innerHTML + "<br><h1>The total price is: Rs  " + total + "</h1>";
+            } else {
+                control.innerHTML = control.innerHTML + "<br><h1>You entered an incorrect product no. </h1>";
+            }
+
+        }
+    </script>
+    <body>
+         <div id="idAssignment5">
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+              10.	A shopkeeper sells three products whose retail prices are as follows: Product 1, 22.5; product 2, 44.50; and product 3, 9.98. Write an application that reads a series of pairs of numbers as follows:
+                    a)product number
+                    b)quantity sold
+                    Your application should use a switch statement to determine the retail price for each product. It should calculate and display the total retail value of all products sold. Use a loop to determine when the application should stop  looping and display the final results.
+
+        
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+    Solution:
+        
+                <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+             <!-- <input type="button" onclick="prompt('Enter any piece of data', '');" value="Click me..." />-->
+             <span id="idSpan1"></span>
+         </div> 
+        
+    </body>
+</html>

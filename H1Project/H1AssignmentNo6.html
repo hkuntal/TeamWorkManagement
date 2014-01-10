@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+    <script language="javascript" type="text/javascript">
+        function ShowPrompt() {
+            var firstName = prompt('What is your first favourite number?', '');
+            var lastName = prompt('What is your second favourite number?', '');
+            var total = parseInt(firstName) + parseInt(lastName);
+            var control = document.getElementById("idAssignment5");
+            control.innerHTML = control.innerHTML + "<br><h1>Your numbers " + firstName + " and " + lastName + " added together give result as " + total+"</h1>";
+
+        }
+    </script>
+    <body>
+        <div id="idAssignment5">
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+             6.	Variables, Prompts, data types & Writing Dynamic Data 
+                    i.	Create variables as needed 
+                    ii.	Have a prompt that asks for the user's favorite number 
+                    iii.	Have a prompt that asks for the user's next favorite number 
+                    iv.	ADD the two into the third variable [since a prompt box ALWAYS returns a string i.e. "5" not 5, use parseInt( ) to convert the entered numbers to numbers BEFORE you add them. ] 
+                    v.	Then write to the page "You numbers (x) and (y) added together are (z) " (hint: it's just one long concatenation written to the page.) 
+                    (HINT: Use document.writeln(“text”) to write directly to page)
+
+        
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+    Solution:
+        
+                <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+             <!-- <input type="button" onclick="prompt('Enter any piece of data', '');" value="Click me..." />-->
+             <span id="idSpan1"></span>
+         </div> 
+        
+    </body>
+</html>

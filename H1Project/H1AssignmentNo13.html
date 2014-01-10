@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+     <script language="javascript" type="text/javascript">
+         function ShowPrompt() {
+            
+             var control = document.getElementById("idAssignment5");
+             control.innerHTML = control.innerHTML + " <br> The numbers betweeen 200 to 300 that are divisible by 7 are: <br>";
+             for (var i = 200; i <= 300; i++) {
+                 if (i % 7 == 0) {
+                     control.innerHTML = control.innerHTML + i + "<br>";
+                 }
+             }
+
+         }
+    </script>
+    <body>
+        <div id="idAssignment5">
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+            13.	Write a program to print the numbers divisible by 7 between 200 and 300.
+        
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+    Solution:
+        
+                <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+             <!-- <input type="button" onclick="prompt('Enter any piece of data', '');" value="Click me..." />-->
+             <span id="idSpan1"></span>
+         </div> 
+       
+    </body>
+</html>

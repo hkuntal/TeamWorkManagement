@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+@*@model Dictionary<int,string>*@
+@model TeamWorkManagement.Models.WorkCaptureModel
+
+<h2>Capture Work for the Team</h2>
+
+@*Create a drpdown to hold the data*@ 
+
+@Html.DropDownListFor(model => model.SelectNamesList, Model.SelectNamesList,"--Select--");
+

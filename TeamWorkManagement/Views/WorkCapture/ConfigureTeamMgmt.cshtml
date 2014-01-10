@@ -1,0 +1,48 @@
+﻿@model TeamWorkManagement.Models.TeamMgmtModel
+
+@{
+    ViewBag.Title = "Configure Team Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ConfigureTeamMgmt</h2>
+<div>
+    @using (Html.BeginForm("Submit", "WorkCapture"))
+    {
+    <h2>Configure Roles</h2>
+    <table style="width:100%">
+        <tr>
+            <td>RoleName
+            </td>
+            <td>
+                @*@Html.DropDownList("Roles", @Model.RolesSelectList, "--Please Select--");*@
+                @Html.Partial("~/Views/PartialViews/partial_ConfigurationElements.cshtml");
+                @* Putting a place holder for displaying the partial view dynamically*@
+                
+            </td>
+            <td>
+                <div id="idDivRenderPartialDynamic"></div>
+            </td>
+        </tr>
+        
+            </table>
+       
+    }
+</div>
+
+@*<div>
+    @using (Html.BeginForm("SubmitTeamMember", "WorkCapture"))
+    {
+        <table>
+           <tr>
+            <td>New Team Member:
+                @Html.TextArea("TeamMemberName");
+            </td>
+            <td>    
+                <input type="submit" title="Add" value="Add Team Member" name="submit"/>
+            </td>
+        </tr>
+               
+        </table>
+    }
+    </div>*@

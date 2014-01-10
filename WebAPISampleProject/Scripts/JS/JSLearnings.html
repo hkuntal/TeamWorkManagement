@@ -1,0 +1,566 @@
+<!-- saved from url=(0050)http://localhost:50968/Scripts/JS/JSLearnings.html -->
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <style>
+            </style>
+    <link href="JSLearnings_files/JSLearning.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript">
+        jQuery.fn.center = function () {
+            this.css("position", "absolute");
+            this.css("top", ($(window).height() - this.height()) / 2 + $(window).scrollTop() + "px");
+            this.css("left", ($(window).width() - this.width()) / 2 + $(window).scrollLeft() + "px");
+            return this;
+        };
+
+        $(document).ready(function () {
+            $('a').click(function (e) {
+
+                $("#background").css({ "opacity": "0.7" })
+                    .fadeIn("slow");
+                $("#background").css('top', $(document).scrollTop());
+
+                $("#large").html("<img src='" + $(this).attr("href") + "' width=100% height=100%" + " alt='" + $(this).attr("alt") + "' /><br/>" + $(this).attr("rel") + "")
+                    .center()
+                    .fadeIn("slow");
+                $("#large").css('top', $(document).scrollTop());
+
+
+                return false;
+            });
+
+            $(document).keypress(function (e) {
+                if (e.keyCode == 27) {
+                    $("#background").fadeOut("slow");
+                    $("#large").fadeOut("slow");
+                }
+            });
+
+            $("#background").click(function () {
+                $("#background").fadeOut("slow");
+                $("#large").fadeOut("slow");
+            });
+
+            $("#large").click(function () {
+                $("#background").fadeOut("slow");
+                $("#large").fadeOut("slow");
+            });
+
+        });
+    </script>
+    <style>
+        img
+        {
+            border: none;
+        }
+
+        #thumbnail img
+        {
+            cursor: pointer;
+        }
+
+        #large
+        {
+            display: none;
+            position: absolute;
+            top: 832px;
+            left: 476px;
+            background: #FFFFFF;
+            padding: 5px;
+            z-index: 10;
+            min-height: 200px;
+            min-width: 200px;
+            color: #336699;
+        }
+
+        #background
+        {
+            display: none;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: #000000;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!--See more at: http://blog.chapagain.com.np/jquery-grey-out-background-and-preview-image-as-popup/#sthash.acjfMdk9.dpuf-->
+
+
+    <div>
+        <a href="JSReferences.html">Java Script References</a>
+
+    </div>
+    <div id="thumbnail">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="Images/Inheritance1.PNG">Click to See this image</a>
+                        hariom
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Heading 1</th>
+                    <th>Heading 2</th>
+                </tr>
+                <tr>
+                    <td>1. Say we have a function 
+                            function Add(a, b, c) {
+                            var sum = a + b + c;
+                            return sum;
+                            }
+                    </td>
+                    <td>a. If we pass an additional parameter it is 
+                            ingnored.
+                            b. If we do not pass the last parameter it is 
+                            considered undefined and the result is NaN where in case of strings 
+                            undefined is considered as string 'undefined'
+                            c. If we pass a value as null then for integers 
+                            it is considered as 0 and for strings it is considered as string "null"
+                            d.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <br>
+                    </td>
+                    <td>
+
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Try Catch   
+                    </td>
+                    <td>Try Catch works simimlar in javascript like C#
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">Functions and Objects<br>
+                    </td>
+                    <td valign="top">Objects produced from object literals are<br>
+                        linked to Object.prototype. Function objects are linked to Function.prototype<br>
+                        (which is itself linked to Object.prototype). Every function is also created with two<br>
+                        additional hidden properties: the function’s context and the code that implements<br>
+                        the function’s behavior.<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Methods of invoking a function and the different behaviors in that
+                    </td>
+                    <td>
+                        <span class="data">1. Method invocation pattern
+                                2. Function Invocation pattern
+                                3. Constructor invocation pattern
+                                4. Apply method invocation pattern Hariom</span></td>
+                </tr>
+                <tr>
+                    <td>Creating an object, prototype of another object.<br>
+                    </td>
+                    <td>This can be achieved by Object.Create
+                            <br>
+                        For e.g. in the example below another_stooge inherits all the properties from the stooge object<br>
+                        var another_stooge = Object.create(stooge);<br>
+                        document.writeln(another_stooge["firstname"]);<br>
+                        The definition of Create looks something like this<br>
+                        <span class="code">if (typeof Object.create !== 'function') {<br>
+                            Object.create = function (o) {<br>
+                            var F = function () {};<br>
+                            F.prototype = o;<br>
+                            return new F();<br>
+                            };</span><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Adding new methods to existing data types<br>
+                    </td>
+                    <td>H
+                    </td>
+                </tr>
+                <tr>
+                    <td>Defining public properties<br>
+                        1. It can be used to enable gettters and setters and make date read-only or write-only<br>
+                    </td>
+                    <td>If there is a private variable in a class 
+                            then it can be accessed by the public property of that class. For e.g.<span class="code"><br>
+                                var Quo = function(string) {<br>
+                                &nbsp;&nbsp;&nbsp; this.status = string;<br>
+                                &nbsp;&nbsp;&nbsp; var _name = "a"; //This is a public property here<br>
+                                &nbsp;&nbsp;&nbsp; //Defining public properties to access the private properties of an object.<br>
+                                &nbsp;&nbsp;&nbsp; Object.defineProperty(this, "Name", {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; get: function() {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return _name;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set: function(value){<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _name=value;<br>
+                                &nbsp;&nbsp;&nbsp; }<br>
+                                });<br>
+                                };<br>
+                                //document.writeln(a.Name);<br>
+                                var a = new Quo("Kuntal");<br>
+                                a.Name = "Testing Public Property";<br>
+                                document.writeln(a.Name); //Testing Public Property<br>
+                                <br>
+                            </span></td>
+                </tr>
+                <tr>
+                    <td>Static data for Classes<br>
+                    </td>
+                    <td>We can declare static member for the classes<br>
+                        <span class="code">var Quo = function(string) {<br>
+                            &nbsp;&nbsp;&nbsp; this.status = string;<br>
+                            }<br>
+                            Quo.Name = "Kuntal"; //This becomes a static property of the&nbsp; class<br>
+                            var a = new Quo("jj");<br>
+                            var b = Quo.Name;<br>
+                        </span>
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Inheritance
+                    </td>
+                    <td>We have seen how to add properties and functions to objects at run time<br>
+                        <br>
+                        <span class="code">var Quo = function (string) {
+                                                                        
+                                                                        
+                                                                                                       this.status = string;};<br>
+                            // Give 
+                                                                        
+                                                                        
+                                                      all instances 
+                                                                        
+                                                      of Quo a public 
+method
+                                                                        
+                                                                        
+                                                                        
+                                                      // called 
+                                                                        
+                                                      get_status.
+                                                                        
+                                                                        
+                                                          
+                                                                        
+                                                      
+Quo.prototype.get_status = function 
+                                                                        
+                                                                        
+                                                      () {
+                                                                        
+                                                                        
+                                                                        
+                                                      return 
+                                                                        
+                                                      this.status;
+                                                                        
+                                                                        
+                                                                        
+                                                      };<br>
+                            // Make 
+                                                                        
+                                                        an instance of 
+Quo.
+                                                                        
+                                                                        
+                                                                        
+                                                        var myQuo = 
+                                                                        
+                                                        new 
+Quo("confused");<br>
+                            document.writeln(myQuo.get_status()); // confused
+                        </span>
+                        <br>
+                        we can now change the prototype of the Class itself. For e.g.<br>
+                        function Animal(foodType) {<br>
+                        this.foodtype = foodtype;<br>
+                        }<br>
+                        function Cow(color)<br>
+                        {<br>
+                        this.color = color;<br>
+                        }<br>
+                        //Inheritance Magic<br>
+                        Cow.prototype
+
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                        = new 
+Animal("Hay"); // Over here the Animal 
+                                                                        
+                                                                        
+                                                                        
+                                                        becomes the base
+ class of 
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                        Cow. The 
+constructor function is called for the 
+                                                                        
+                                                                        
+                                                                        
+                                                        Animal<br>
+                        var c = new 
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                              
+Cow("White"); //When we create an object of Cow, it is now going 
+                                                                        
+                                                                        
+                                                                        
+                                                              to 
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                              first call
+ the constructor function of Animal and then the 
+                                                                        
+                                                                        
+                                                                        
+                                                              
+constructor 
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                              function 
+of Cow<br>
+                        document.writeln(c.foodType); //Hay<br>
+                        document.writeln(c.color)//white<br>
+                        var test = c instanceof Animal;&nbsp; //true<br>
+                        var test2 = c instanceofCow; //true<br>
+
+
+
+
+
+
+
+                        <a id="ha" href="Images/Inheritance1.PNG">Click to See this image</a><br>
+                        Check out the following links for more details<br>
+
+
+
+
+
+
+
+
+
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto">Link1</a><a></a><br>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain?redirectlocale=en-US&amp;redirectslug=JavaScript%2FGuide%2FInheritance_and_the_prototype_chain">Link2</a><br>
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>JQuery Simulation<br>
+                    </td>
+                    <td>
+                        <span class="code">(function () {<br>
+                            &nbsp;&nbsp;&nbsp; var foo = function (arg) { // core constructor<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ensure to use the `new` operator<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!(this instanceof foo))<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return new foo(arg);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // store an argument for this example<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.myArg = arg;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //..<br>
+                            &nbsp;&nbsp;&nbsp; };<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp; // create `fn` alias to `prototype` property<br>
+                            &nbsp;&nbsp;&nbsp; foo.fn = foo.prototype = {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; init: function () {/*...*/ }<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //...<br>
+                            &nbsp;&nbsp;&nbsp; };<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp; // expose the library<br>
+                            &nbsp;&nbsp;&nbsp; window.foo = foo;<br>
+                            })();<br>
+                            <br>
+                            // Extension:<br>
+                            <br>
+                            foo.fn.myPlugin = function () {<br>
+                            &nbsp;&nbsp;&nbsp; alert(this.myArg);<br>
+                            &nbsp;&nbsp;&nbsp; return this; // return `this` for chainability<br>
+                            };<br>
+                            <br>
+                            foo("bar").myPlugin(); // alerts "bar"<br>
+                        </span>
+                    </td>
+                </tr><tr>
+  <td valign="top">Multiple CSS selectors<br></td>
+  <td valign="top">Say we have two css classes<br>.code<br>{<br>&nbsp;&nbsp;&nbsp; color: green;<br>&nbsp;&nbsp;&nbsp; font-family: fantasy;<br>&nbsp;&nbsp;&nbsp; font-style: italic;<br>&nbsp;&nbsp;&nbsp; font-size: 13;<br>&nbsp;&nbsp;&nbsp; padding: 10px;<br><br>}<br>&nbsp;.code.descArea{<br>&nbsp;&nbsp;&nbsp; padding:10px;<br>&nbsp;&nbsp;&nbsp; background-color: lightgray;<br>&nbsp;&nbsp;&nbsp; border: black 1px solid;<br>&nbsp;&nbsp;&nbsp; -webkit-border-radius: 15px;<br>&nbsp;&nbsp;&nbsp; -moz-border-radius: 15px;<br>&nbsp;&nbsp;&nbsp; border-radius: 15px;<br>}<br>Then
+ if an element is decorated with both of them, for e.g., &lt;table 
+class="code descArea"&gt;. In that case browser will read the css 
+properties from both ".code" as well as ".code .descArea". The 
+properties from ".code .descArea" will override any properties from 
+".code" class<br></td>
+</tr><tr>
+  <td valign="top">Prototype, Functions and Objects<br></td>
+  <td><span class="pdfText">
+  Functions in JavaScript are objects. Objects are collections of 
+name/value pairs having a hidden link to a prototype object. Objects 
+produced from object literals are
+linked to Object.prototype. Function objects are linked to 
+Function.prototype (which is itself linked to Object.prototype). Every 
+function is also created with two
+additional hidden properties: the function’s context and the code that 
+implements the function’s behavior.
+Every function object is also created with a prototype property. Its 
+value is an object with a constructor property whose value is the 
+function. This is distinct from the
+hidden link to Function.prototype. The meaning of this convoluted 
+construction will
+be revealed in the next chapter. <br>
+If a function is invoked with the new prefix, then a new object will be created with a
+hidden link to the value of the function’s prototype member, and this will be bound
+to that new object.<br>
+<div>
+When a function object is created, the Function constructor that produces the function
+object runs some code like this:
+<span class="code"> this.prototype = {constructor: this};</span>
+Say we have function something like 
+<span class="code">
+var Student = function(name) {
+    this.Name = name;
+    console.log(name);
+    this.Age = 0;
+};
+</span>
+Then we have the following properties set to
+<b>Student.prototype = object </b>. Now this will have this constructor property of the prototype object
+<a id="proto" href="Images/FunctionObjectPrototype.PNG">Click to see the prototype of Object and Function</a><br><br>When a function is stored as a property of an object, we call it a method.<br><br>
+<div class="showBorder"> 
+Function.prototype actually is a function but for the sake of 
+understanding we can assume it to be an object with structure something 
+like
+<span class="code">
+//Function.prototype = {
+//    arguments: null,
+//    length: 0,
+//    call: function(){
+//        // secret code
+//    },
+//    apply: function(){
+//        // secret code
+//    }
+//    ...
+//}
+</span>
+Now look at the below output statements
+<span class="code">
+typeof Function = "function"
+typeof Object = "function"
+typeof Function.prototype = "function"
+typeof Object.prototype = "object"
+</span>
+<b>All objects inherit from Object.prototype
+All Function objects inherit from Function.prototype which in turn 
+inherit from Object.prototype
+Function.prototype has properties/methods like 
+arguments,
+caller,
+constructor, 
+length,name 
+and methods like 
+apply,
+bind,
+call,
+isGenerator,
+toSource,
+toString
+Object.prototype provides properties like 
+__parent__, 
+__proto__ and 
+methods like 
+__defineGetter__, 
+__defineSetter__, 
+constructor 
+hasOwnProperty, 
+isPrototypeOf, 
+__lookupGetter__, 
+__lookUpSetter__, 
+__noSuchMethod__,
+propertyIsEnumerable,
+toLocaleString, 
+unwatch, 
+valueOf, 
+watch</b>
+</div>
+</div>
+<br>
+<div class="showBorder">
+//To create a Function object
+//var Student = new Function ([arg1, arg2, ... argn], functionBody); We 
+can also define functions using the function literal
+//Every function object is also created with a prototype property. Its 
+value is an object with a constructor property whose value is the 
+function. This is distinct from the
+//hidden link to Function.prototype
+
+Consider the below two statements
+<span class="code">
+Student.constructor: function Function() { [native code] }
+Student.prototype.constructor: function (name) { ==&gt; this is the actual Student function
+</span>
+<b>When an instance of an object is created, the __proto__ property is 
+updated to point to the constructor’s prototype, which, in this case, is
+ Function.
+Student.__proto__ === Function.prototype //true    -- note that Student 
+is an instance of Function. Student is an instance of Function, so it 
+will be wise to say that the __proto__ points to the 
+Constructors prototype. The constructor here is the Function. </b>
+
+<a id="proto1" href="Images/FunctionAndObjectDefinition.PNG">Click to see Object and Function details</a>
+</div>
+<div>
+<br><br><br><br>
+  
+  </div></span></td>
+</tr>
+
+
+            </tbody>
+        </table>
+
+        <div id="background"></div>
+        <div id="large" style="height: 50%; width: 50%"></div>
+
+    </div>
+
+
+
+</body></html>

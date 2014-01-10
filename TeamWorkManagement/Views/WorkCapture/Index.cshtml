@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+@*@model Dictionary<int,string>*@
+@model TeamWorkManagement.Models.WorkCaptureModel
+
+<h2>Capture Work for the Team</h2>
+<dl>
+    @*<dt>Name:</dt>
+    <dd>@Model[1]</dd>
+    <dt>Age:</dt>
+    <dd>@Model[2]</dd>*@
+    @if(ViewBag.HasPermission){
+        <h1>View Bag Property tested</h1>
+        }
+    <div>
+        @ViewData["CurrentTime"]
+    </div>
+</dl>
+@*Create a drpdown to hold the data*@ 
+
+@Html.DropDownListFor(model => model.SelectNamesList, Model.SelectNamesList,"--Select--");
+

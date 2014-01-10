@@ -1,0 +1,32 @@
+﻿
+@model TeamWorkManagement.Models.TeamMgmtModel
+<div><h2>Delete Roles</h2>
+
+                <div>
+                    <table>
+                <tr>
+                    <td>
+                            @Html.CheckBoxList("Roles",
+                                                         x => x.ObjTeamMgmtDBEntities.LkpRoles,
+                                                         x => x.Id,
+                                                         x => x.RoleName,
+                                                         null)
+                            )
+                    </td>
+                    <td>
+                <input type="submit" title="Delete" value="Delete" name="submit"/>
+                        
+                    </td>
+        </tr>
+        </table>
+                    </div></div>
+              <table>
+        <tr>
+            <td>New Role:
+                @Html.TextArea("RoleName");
+            </td>
+            <td>    
+                <input type="submit" title="Add" value="Add" name="submit"/>
+            </td>
+        </tr>
+    </table>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Content\Frame3StyleSheet.css"/>
+    </head>
+   <script language="javascript" type="text/javascript">
+       function ShowPrompt() {
+           var firstName = prompt('Enter the first number?', '');
+           var i = firstName % 2;
+           var control = document.getElementById("idAssignment5");
+           
+           if (i == 0) {
+           
+           control.innerHTML = control.innerHTML + "<br><h1> " + firstName + " is an even number" + "</h1>";
+       }
+
+       else {
+               control.innerHTML = control.innerHTML + "<br><h1> " + firstName + " is an odd number" + "</h1>";
+
+           }
+
+       }
+    </script>
+                                                 <body>
+     <div id="idAssignment5">
+        <h2>Problem Statement</h2>
+        <hr/>
+        <br/>
+            8.	Accept a number from the user and display whether the given number is an odd number or even number
+        
+        <br/>
+        <br/>
+        <h2>Solution</h2>
+        <hr/>
+    Solution:
+        
+                <input type="submit" value="TEST" onclick="ShowPrompt()"/>
+             <!-- <input type="button" onclick="prompt('Enter any piece of data', '');" value="Click me..." />-->
+             <span id="idSpan1"></span>
+         </div>
+                                                                                                     
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Partial_ConfigurationElements";
+}
+
+<h2>Click to Configuer the Elements</h2>
+
+<script type="text/javascript" src="../../Scripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">     
+    $(document).ready(function () {
+        $('#lnkAddRoles').click(function (event) {
+            event.preventDefault();
+            var url = $(this).attr('href');
+            $('#idDivRenderPartialDynamic').load(url);
+        });
+    });
+    
+    function LoadPartialView(obj) {
+        //Check which hyperlink was clicked and through the use of JQuery load the partial view dynamically
+        alert("Hey I have been clicked");
+        //The problme is that this method is not being called because the hyperlink is being clikced because by default the 
+        //href attribute is making the link redirect to the next page in the hyperlink
+        
+        //event.preventDefault(); will avoid that
+        //Using Juery load the partial view
+       @* $('#idDivRenderPartialDynamic').load(
+            @Url.Action("ConfigureNames", "WorkCapture")
+        );*@
+    }
+</script>
+
+<div>
+    <table>
+        <tr>
+            <td>
+                @Html.ActionLink("Configure Team Members", "ConfigureNames","WorkCapture",new {onclick="LoadPartialView(this);"},new {id="lnkAddTeamMember"});
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Configure Roles", "ConfigureRoles","WorkCapture",new {onclick="LoadPartialView(this);"},new {id="lnkAddRoles"});
+            </td>
+        </tr>
+        
+    </table>
+</div>

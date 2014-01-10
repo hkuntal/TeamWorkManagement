@@ -1,0 +1,16 @@
+<student id="UUID" version="5">
+  <name>Hariom</name>
+  <addresses>
+    <address type="HOME">
+      <stAddr1>987</stAddr1>
+      <stAddr2>Kamothe</stAddr2>
+      <city>Mumbai</city>
+      <state>Maharashtra</state>
+      <zip>12345</zip>
+    </address>
+  </addresses>
+  <birthDate>03/17/2012</birthDate>
+  <gender>Male</gender>
+  <ssn>12345623</ssn>
+  <other>Other</other>
+</student>
