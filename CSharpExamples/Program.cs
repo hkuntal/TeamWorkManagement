@@ -22,6 +22,7 @@ namespace CSharpExamples
             //Console.WriteLine(ob.GenericMethod<int>("hariom"));
             Console.ReadLine();
 
+            Console.WriteLine("Hariom Kuntal");
         }
 
         private static void CheckStaticMethods()
