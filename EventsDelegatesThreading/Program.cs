@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EventsDelegatesThreading
@@ -22,11 +23,15 @@ namespace EventsDelegatesThreading
 
             //CancellationDemo.Go();
 
-            TestThreading();
+            //TestThreading();
 
             //TestExceptions();
 
             //TestParallelism();
+
+            TestEventsWithThreading();
+
+            Console.ReadLine();
         }
 
         private static void TestExceptions()
@@ -54,6 +59,29 @@ namespace EventsDelegatesThreading
 
             Console.ReadLine();
         }
+
+        private static void TestEventsWithThreading()
+        {
+            Console.WriteLine("Registering events on the managed thread: " + System.Threading.Thread.CurrentThread.ManagedThreadId);
+            //The idea here is to register the events on one thread and raise the events on other thread and check which thread executes the handler
+            //FINDING: The thread on which the event is raised is the one that actually calls the event handler as well.
+            TapeRecorder objTapeRecorder = new TapeRecorder();
+
+            PlayTapeRecorder objPlayTapeRecorder = new PlayTapeRecorder();
+            objTapeRecorder.Pause += objPlayTapeRecorder.PlayPause;
+            objTapeRecorder.Play += objPlayTapeRecorder.PlayTape;
+            
+            //objTapeRecorder.PlayReturns += objPlayTapeRecorder.PlayTapeWithReturns;
+            //objTapeRecorder.PlayReturns += objPlayTapeRecorder.PlayTapeWithReturns2;
+
+            //objTapeRecorder.Pause += objPlayTapeRecorder.PlayTape;
+            //objTapeRecorder.FastForward += objPlayTapeRecorder.PlayTape;
+            //objTapeRecorder.Reverse += objPlayTapeRecorder.PlayTape;
+
+            //Invoke the events
+            objTapeRecorder.RaiseTheEventsInOtherThread();
+
+            }
 
         private static void TestDelegates()
         {
@@ -97,6 +125,8 @@ namespace EventsDelegatesThreading
         }
         public int PlayTapeWithReturns(object sender, TapeRecorderArgs args)
         {
+            //The event handlers are called on the same thread  on which the events are raised. If there are multiple event handlers registered with the event
+            //then they are called sequentially in the order of registration.
             Console.WriteLine(args.SongName + " is now being played on " + System.Threading.Thread.CurrentThread.ManagedThreadId);
             return 5;
         }
@@ -105,10 +135,10 @@ namespace EventsDelegatesThreading
             Console.WriteLine(args.SongName + " second part is now being played on " + System.Threading.Thread.CurrentThread.ManagedThreadId);
             return 10;
         }
-        //public void PlayPause()
-        //{
-        //    Console.WriteLine("Tape recorder has now paused");
-        //}
+        public void PlayPause(object sender, TapeRecorderArgs args)
+        {
+            Console.WriteLine(args.SongName + " is now paused on " + System.Threading.Thread.CurrentThread.ManagedThreadId);
+        }
         //public void PlayFastForward()
         //{
         //    Console.WriteLine("Fast forwarding the tape");
@@ -136,6 +166,7 @@ namespace EventsDelegatesThreading
             //Raise all the events
             Play(this, new TapeRecorderArgs("Tere Naam"));
 
+            //If an event handler resturns a parameter then the paramweter returned by the last event hanlder gets captured.
             int a = PlayReturns(this, new TapeRecorderArgs("Katrina returns"));
 
             Console.WriteLine(a.ToString());
@@ -144,6 +175,24 @@ namespace EventsDelegatesThreading
             //Play("Fast Forward");
 
             //Play("Reverse");
+        }
+        public void RaiseTheEventsInOtherThread()
+        {
+            //Create a new thread
+            System.Threading.Thread t = new Thread(RaiseEvents);
+            t.Start();
+        }
+
+        private void RaiseEvents()
+        {
+            //Raise all the events
+            Console.WriteLine("Raising event on thread: " + System.Threading.Thread.CurrentThread.ManagedThreadId);
+
+            Play(this, new TapeRecorderArgs("Tere Naam"));
+
+            Pause(this, new TapeRecorderArgs("Tere Naam"));
+
+
         }
     }
 

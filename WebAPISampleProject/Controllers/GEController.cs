@@ -22,6 +22,7 @@ namespace WebAPISampleProject.Controllers
         }
         public ActionResult LaunchZFP()
         {
+            var t = "ahrio";
             return View();
         }
     }

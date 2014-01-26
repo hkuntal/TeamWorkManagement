@@ -46,5 +46,6 @@ Quo.prototype.get_status1 = function () {
     return this.status;
 };
 var myQuo = new Quo("confused");
+
 document.writeln(myQuo.get_status1()); // confused
 document.writeln(myQuo.get_status()); // confused
