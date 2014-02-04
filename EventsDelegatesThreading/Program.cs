@@ -32,6 +32,8 @@ namespace EventsDelegatesThreading
             TestEventsWithThreading();
 
             Console.ReadLine();
+
+            
         }
 
         private static void TestExceptions()

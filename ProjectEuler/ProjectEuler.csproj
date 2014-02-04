@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="MulitplesOf3And5.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectEuler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

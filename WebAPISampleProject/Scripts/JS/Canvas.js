@@ -17,23 +17,45 @@ var DrawImage = function(imageData) {
     }
 };
 var DrawImageFromZFP = function() {
+    
+    //Authenticate the URL before launching the application
+    var authenticationQuery = 'mode=StandAloneLaunch';
+
+    $.ajax({
+        type: 'POST',
+        async: true,
+        url: "http://localhost/zfp/Dicom/UrlAuthentication?" + authenticationQuery,
+        //contentType: "application/json; charset=utf-8",
+        //HAD to modify the content type below as it was a cross domain request. And it was not accepting a POST request
+        //For details abt cross domain requests see this article https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS?redirectlocale=en-US&redirectslug=HTTP_access_control
+        
+        contentType: 'application/x-www-form-urlencoded',
+        dataType: 'json',
+        cache: false
+    })
+        .done(function (data) {
+            //Don't do anything/ Just log the results
+            console.log(data);
+            launchStudy();
+        });
+};
+
+function launchStudy() {
+
     var sui = "1.2.840.113619.2.55.3.2831216740.515.1357125441.10";
     var sop = "1.2.840.113619.2.55.3.2831216740.515.1357125441.19.5";
-   //This will create the zfpService object for that sui
+    //This will create the zfpService object for that sui
     
     $.getJSON(getUrlTOLaunchStudy(sui), function (data) {
-               if (data.indexOf('CMDERROR') == 0) {
-                    console.log("An error has occured when trying to launch a study");
-                } else {
-                   console.log("Study function successfully called");
-                   getLosslessImage(sui, sop);
-                }
-            });
-
-    //getLossyImage(sui,sop);
-
-    
-};
+        if (data.indexOf('CMDERROR') == 0) {
+            console.log("An error has occured when trying to launch a study");
+        } else {
+            console.log("Study function successfully called");
+            //getLosslessImage(sui, sop);
+            getLossyImage(sui, sop);
+        }
+    });
+}
 
 function getLossyImage(sui,sop) {
     var index = 0;
@@ -41,7 +63,7 @@ function getLossyImage(sui,sop) {
     
     $.getJSON(getImageDataUrl(sui, sop, index, null, null, options), function(data) {
         if (data.ImageHeader.indexOf('CMDERROR') == 0) {
-            console.log("$$ Lossy Image Error for " + sop + "#" + index + " at " + (new Date()).getFormatedDate() + " Message = " + data.ImageHeader);
+            console.log("$$ Lossy Image Error for " + sop + "#" + index + " at " + new Date() + " Message = " + data.ImageHeader);
             console.log("Error Occurred :" + data.ImageHeader);
         } else {
             //console.log("$$ Received lossy image - token " + token);
@@ -114,7 +136,7 @@ function DrawLosslessImage(pixeldata) {
 
 
 function getImageDataUrl(sui, sop, index, comp, scale, options) {
-    var url = "http://3.20.165.14/ZFP/Dicom/ImageData?";
+    var url = "http://localhost/ZFP/Dicom/ImageData?";
     if (comp == null && scale == null) {
         
             if (sui)
@@ -140,9 +162,16 @@ function getImageDataUrl(sui, sop, index, comp, scale, options) {
 
 function getUrlTOLaunchStudy(sui) {
     var options = JSON.stringify({ PatientId: "S3PID_9_11", PatientName: "S3_CT_HEADANGIO_PRIOR_911" });
+    var studyFetchSetupCmd = {
+        ClientDeviceInfo: {
+            IsTouchDevice: false
+        },
+        SetSeriesPriorityOnStudyLoad: false
+    };
 
-    var url = "http://3.20.165.14/ZFP/Dicom/ImageData?sui=" + sui + "&patHistoryLoaded=true&assigningAuthorityId=1&applicationMode=StandAloneLaunch&getOptimizedStudy=true" +
-        "&patientHistoryStudyUids=[]&patRef=" + options + "&openApiCmd=Default";
+
+    var url = "http://localhost/ZFP/Dicom/ImageData?sui=" + sui + "&patHistoryLoaded=true&assigningAuthorityId=1&applicationMode=StandAloneLaunch&getOptimizedStudy=true" +
+        "&patientHistoryStudyUids=[]&patRef=" + options + "&openApiCmd=Default" + "&studyFetchSetupCmd=" + JSON.stringify(studyFetchSetupCmd);;
 
     return url;
 }

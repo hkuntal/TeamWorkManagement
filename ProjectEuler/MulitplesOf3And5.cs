@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectEuler
 {
-    internal static class MulitplesOf3And5
+    public static class MulitplesOf3And5
     {
         public static int Solve(int maxValue)
         {
@@ -53,16 +53,43 @@ namespace ProjectEuler
 
         public static long LargestPrimeFactor(long a)
         {
+            Stack<long> divisor = new Stack<long>();
             int lpn = 1;
             long largestPrimeFactor=1;
-            for (long i = a/2; i > 1; i--)
+            //for (long i = a/2; i > 1; i--)
+            //{
+            //    if (a%i == 0)
+            //    {
+            //        if (i.IsPrime())
+            //        {
+            //            largestPrimeFactor = i;
+            //            return largestPrimeFactor;
+            //        }
+            //    }
+            //}
+            long c = 0;
+            for (long i = 2; i <= a/i; i++)
             {
-                if (a%i == 0)
+                if (a % i == 0)
                 {
-                    if (i.IsPrime())
+                    c = a/i;
+                    divisor.Push(i);
+                    if (c.IsPrime())
                     {
-                        largestPrimeFactor = i;
+                        largestPrimeFactor = c;
                         return largestPrimeFactor;
+                    }
+                }
+            }
+            if (largestPrimeFactor == 1)
+            {
+                long d = 0;
+                while (divisor.Count > 0)
+                {
+                    d = divisor.Pop();
+                    if (d.IsPrime())
+                    {
+                        return d;
                     }
                 }
             }
@@ -75,7 +102,7 @@ namespace ProjectEuler
         public static bool IsPrime(this long number)
         {
 
-            for (int i = 2; i < number; i++)
+            for (int i = 2; i <= number/i; i++)
             {
                 if (number%i == 0)
                     return false;

@@ -15,14 +15,15 @@ namespace CSharpExamples
             //Debug.WriteLine("Testing");
             //Collections.TestCollection();
             
-            ProcessFlatFiles();
+            //ProcessFlatFiles();
 
             Console.WriteLine("Hariom");
             //Investigate ob = new Investigate();
             //ob.TestArray();
             //Console.WriteLine(ob.GenericMethod<int>("hariom"));
-            Console.ReadLine();
+            //Console.ReadLine();
 
+            Debug.WriteLine("Harioms Debug Window");
 
         }
 

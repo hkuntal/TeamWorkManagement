@@ -16,6 +16,10 @@ namespace ProjectEuler
 
             Console.WriteLine(MulitplesOf3And5.LargestPrimeFactor(600851475143));
 
+            //Console.WriteLine(MulitplesOf3And5.LargestPrimeFactor(1665));
+
+            //Console.WriteLine(MulitplesOf3And5.LargestPrimeFactor(134));
+
             Console.Read();
         }
     }
