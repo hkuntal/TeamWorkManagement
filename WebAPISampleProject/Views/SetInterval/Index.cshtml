@@ -1,0 +1,232 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        canvas
+        {
+            border: 1px solid black;
+        }
+
+        span
+        {
+            position: absolute;
+            bottom: 0px;
+            margin: 2px;
+            background-color: white;
+            z-index: 2;
+        }
+
+        .sampleImg
+        {
+            display: block;
+            position: relative;
+            height: 200px;
+            width: 200px;
+            margin: 5px;
+            float: left;
+        }
+
+        .row
+        {
+            display: table-row;
+        }
+    </style>
+    <script type="text/javascript" src="http://knockoutjs.com/downloads/knockout-3.0.0.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+        //Extending the Date Prototype
+        Date.prototype.getFormattedDate = function () {
+            var d = this;
+            var da = d.getDate();
+
+            var mo = d.getMonth() + 1; //Months are zero based
+            var y = d.getFullYear();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+            var mm = d.getMilliseconds();
+            var fdate = y + "-" + mo + "-" + da + " " + h + ":" + m + ":" + s + "." + mm;
+            return fdate;
+
+        };
+        var intervalFunc = null;
+        window.onload = function () {
+            var viewModel = {
+                detailsEnabled: ko.observable(false),
+                enableDetails: function () {
+                    this.detailsEnabled(true);
+                },
+                disableDetails: function () {
+                    this.detailsEnabled(false);
+                },
+                setMouseDownInterval: function () {
+                    //alert("MouseDown event called");
+                    //intervalFunc = setInterval(displayImage, 20);
+                    //intervalFunc = setInterval(function () { console.log("TestFunc called"); }, 2000);
+                    //intervalFunc = setInterval(TestFunc, 2000);
+                    intervalFunc = setInterval(fillCanvas, 200);
+                    //intervalFunc = setTimeout(fillCanvas, 200);
+                    //fillCanvas();
+                },
+
+                clearMouseDownInterval: function () {
+                    if (intervalFunc) {
+                        clearInterval(intervalFunc);
+                    }
+                    log("Interval Cleared");
+                }
+            };
+            ko.applyBindings(viewModel);
+
+            //Fill the Canvas
+            //fillCanvas();
+        };
+        function clearLoggingInterval()
+        {
+            if (intervalFunc) {
+                clearInterval(intervalFunc);
+            }
+            log("**Interval Cleared");
+        }
+        function fillCanvas() {
+            var width = 200,
+            height = 200;
+            var testIterations = 500;
+            var i = 0;
+            var oldTime = new Date().getTime();
+
+            imgCanvas.height = width;
+            imgCanvas.width = height;
+            var context = imgCanvas.getContext("2d");
+            var imgd = context.createImageData(width, height);
+            var pix = imgd.data;
+            //log("prepare píxels");
+            // Loop over each pixel and set a transparent red.
+            for (i = 0; n = pix.length, i < n; i += 4) {
+                pix[i] = Math.random() * 255; // red channel
+                pix[i + 1] = Math.random() * 255; // green channel
+                pix[i + 2] = Math.random() * 255; // blue channel 
+                pix[i + 3] = 255; // alpha channel
+            }
+
+            context.putImageData(imgd, 0, 0);
+            //log("píxels prepared");
+            //log("Performing " + testIterations + " iterations:");
+
+            var data;
+
+            //test with getimagedata
+
+            for (i = 0; i < testIterations; i++) {
+                var imgdata = context.getImageData(0, 0, width, height);
+                data = imgdata;
+            }
+
+            //paste the data onto a new canvas
+            imgChildCanvas.height = width;
+            imgChildCanvas.width = height;
+
+            var imgContext = imgChildCanvas.getContext("2d");
+            imgContext.putImageData(data, 0, 0);
+
+            log("píxels copied with getImageData: " + (new Date().getTime() - oldTime) + "ms");
+        }
+
+        function callWebAPI() {
+            //Simluate some javascript code that will take some time bound action
+            var api = "http://localhost/DemoWebAPIS/api/values/52356";
+            var startTime = new Date();
+            $.getJSON(api, function (data) {
+                console.log("Calling the WebAPI");
+                var studyLayoutTime = new Date(),
+                    timeTaken = (studyLayoutTime - startTime) / 1000;
+                console.log("[!!DEBUG!!!] Time taken to fetch Study Layout"
+                    + " - " + timeTaken + " secs");
+                console.log(data);
+                $("#output").innerText = data;
+            });
+        }
+
+        function displayImage() {
+            console.log("Calculation started at " + (new Date()).getFormattedDate());
+            calculatePrime(111111);
+            console.log("Calculation End at " + (new Date()).getFormattedDate());
+        }
+
+        function calculatePrime(number) {
+            //Insert a time consuming operation
+            for (var i = 2; i < number; i++) {
+                if (number % i == 0)
+                    console.log("Nmber is Prime");
+            }
+        }
+
+        function TestFunc() {
+            console.log("TestFunc called");
+        }
+
+        function log(text) {
+            console.log(text);
+            out.innerHTML += new Date().getFormattedDate() + ": " + text + "<br/>";
+        }
+
+        //function myFunction(elmnt, clr) {
+        //    elmnt.style.color = clr;
+        //}
+
+
+        //var viewModel = {
+        //    detailsEnabled: ko.observable(false),
+        //    enableDetails: function () {
+        //        this.detailsEnabled(true);
+        //    },
+        //    disableDetails: function () {
+        //        this.detailsEnabled(false);
+        //    },
+        //};
+
+        //ko.applyBindings(viewModel);
+        function clearLogs() {
+            out.innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+    <div class="row">
+        <div>
+            <input type="button" id="btnClick" value="Set Interval" data-bind="event:{mousedown: setMouseDownInterval ,mouseup: clearMouseDownInterval}" />
+            <input type="button" id="btnClick1" value="Clear Logs" onclick="clearLogs()" />
+            <input type="button" id="btnClick2" value="Clear Interval" onclick="clearLoggingInterval()" />
+        </div>
+        <div class="sampleImg">
+            <canvas id="imgCanvas" width="400" height="400"></canvas>
+            <span>Main Canvas</span>
+
+        </div>
+        <div class="sampleImg">
+            <canvas id="imgChildCanvas" width="400" height="400"></canvas>
+            <span>Child Canvas</span>
+
+        </div>
+    </div>
+<div id="out" class="row"></div>
+
+@*    <div>
+        <div data-bind="event: { mousedown: setMouseDownInterval, mouseout: disableDetails }">
+            Mouse over me
+        </div>
+        <div data-bind="visible: detailsEnabled">
+            Details
+        </div>
+
+    </div>*@
+
+</body>
+</html>

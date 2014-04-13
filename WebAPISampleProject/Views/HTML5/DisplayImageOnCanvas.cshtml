@@ -11,24 +11,76 @@
     <title>DisplayImageOnCanvas</title>
     <script src="~/Scripts/JS/Canvas.js"></script>
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
-</head>
-<body>
-    <div>
-        
-        <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGP C/xhBQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YGARc5KB0XV+IA AAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAF1J REFUGNO9zL0NglAAxPEfdLTs4BZM4DIO4C7OwQg2JoQ9LE1exdlYvBBeZ7jq ch9//q1uH4TLzw4d6+ErXMMcXuHWxId3KOETnnXXV6MJpcq2MLaI97CER3N0 vr4MkhoXe0rZigAAAABJRU5ErkJggg==" alt="Red dot" />
-    </div>
-    <div>
-        @*        <img id="BAse64Image" src = "@Model.Base64EncodedImage"
-              alt="Image generated from base 64 encoded string"  />*@
-        <img id="forCanvas" src="http://localhost:50968/Images/Car.JPG" height="512" width="512"/>
-    </div>
-    <div>
-        <canvas id="dcmCanvas" height="800" width="800" style="border:1px solid black"></canvas>
-    </div>
-    
+    <script src="~/Scripts/JS/IndexedDB.js"></script>
+    <script src="~/Scripts/JS/IndexedDBWrapper.js"></script>
     <script>
-        //DrawImage();
-        DrawImageFromZFP(); 
+        function invokeZfp() {
+            var launchUrl = "http://localhost/zfp";
+            window.open(launchUrl);
+        }
+        function DisplayImageAgain() {
+            alert("Displaying image again");
+            DrawImageByReadingImageDataFromFileSystem(patientName);
+        }
     </script>
-</body>
+ <style type="text/css">
+     .divider
+     {
+         position: absolute;
+         left: 50%;
+         top: 10%;
+         bottom: 10%;
+         border-left: 1px solid white;
+     }
+     .sampleImg
+     {
+         display: block;
+         position: relative;
+         margin: 5px;
+         float: left;
+     }
+     .row
+     {
+         display: table-row;
+     }
+     </style>
+
+</head>
+    <body>
+        <button onclick="invokeZfp()">Invoke ZFP</button>
+        <button onclick="DisplayImageAgain()">Display Lossless Image Again</button>
+        <div>
+        
+            <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGP C/xhBQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YGARc5KB0XV+IA AAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAF1J REFUGNO9zL0NglAAxPEfdLTs4BZM4DIO4C7OwQg2JoQ9LE1exdlYvBBeZ7jq ch9//q1uH4TLzw4d6+ErXMMcXuHWxId3KOETnnXXV6MJpcq2MLaI97CER3N0 vr4MkhoXe0rZigAAAABJRU5ErkJggg==" alt="Red dot" />
+        </div>
+        <div>
+            @*        <img id="BAse64Image" src = "@Model.Base64EncodedImage"
+              alt="Image generated from base 64 encoded string"  />*@
+            @*<img id="forCanvas" src="http://localhost/Images/Car.JPG" height="512" width="512"/>*@
+            @*<img id="forCanvas" height="512" width="512"/>*@
+            <canvas id="forCanvas" height="10" width="10" style="border:1px solid black"></canvas>
+        </div>
+        <div class="row">
+            <div class="sampleImg">
+                <canvas id="dcmCanvasLossy" height="400" width="400" style="border:1px solid black"></canvas>
+                <div>
+                    <span>Lossy Image</span>
+                </div>
+            </div>
+    
+            <div class="sampleImg">
+                <canvas id="dcmCanvasLossless" height="600" width="300" style="border:1px solid black"></canvas>
+                <div>
+                    <span>Lossless Image</span>
+                </div>
+            </div>
+        </div>
+        <script>
+        //http://jsfiddle.net/gtKBs/
+        //DrawImage(); //Draws the car image on the Canvas
+        //DrawImageFromZFP(); //Draws image by launching study in Zfp and calling their image APIs to retrieve the image byte array
+            var patientName = "IllVery"; //"LEESUNG"; //"LLOPIS_7MP"; //"LLOPIS";
+            DrawImageByReadingImageDataFromFileSystem(patientName);
+        </script>
+    </body>
 </html>

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Concurrent;
 
 namespace ProjectEuler
 {
-    public static class ProjectEuler
+    public static class ProjectEulerProblems
     {
         public static int Problem4()
         {
@@ -41,6 +42,38 @@ namespace ProjectEuler
             }
             return true;
         }
-        
+
+        static ConcurrentBag<Int64> primeList = new ConcurrentBag<Int64>();
+        public static Int64 Problem10(int maxValue)
+        {
+
+            var range = Enumerable.Range(1, maxValue);
+            //Use thread pool library to find the numbers
+            //Using Parallel is faster than individual foreach loop
+            Parallel.ForEach(range, AddToList);
+            //foreach (int i in range)
+            //{
+            //    AddToList(i);
+            //}
+            
+            //Add the numbers in the list
+            primeList.Add(2);
+            var sum = primeList.Sum();
+            throw new DivideByZeroException();
+            return sum;
+        }
+        private static void AddToList(int n)
+        {
+            if (n%2 == 0 || n==1)
+                return;
+            if (ProjectEuler.Extensions.IsPrime(n))
+            {
+                primeList.Add(n);
+            }
+        }
+        public static void Problem11()
+        {
+            
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace CSharpExamples
             //Investigate ob = new Investigate();
             //ob.TestArray();
             //Console.WriteLine(ob.GenericMethod<int>("hariom"));
-            //Console.ReadLine();
+            Console.ReadLine();
 
             Debug.WriteLine("Harioms Debug Window");
 

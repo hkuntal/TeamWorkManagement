@@ -31,5 +31,13 @@ namespace WebAPISampleProject.Controllers
         {
             return View();
         }
+        //public ActionResult TestGlobal()
+        //{
+            
+        //}
+        public ActionResult JavascriptScope()
+        {
+            return View();
+        }
     }
 }

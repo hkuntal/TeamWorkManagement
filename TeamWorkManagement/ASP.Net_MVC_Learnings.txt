@@ -5,4 +5,6 @@
 3. Difference between return PartialView("Auction", auction); and return View("Auction", auction); is that View returns Layout + Content where as PartialView only returns the content and not the layout.
 Layout means the Master pages adn 
 
-4. 
+4. There are two types of controllers - MVC controller and API controler. The MVC controllers are typically used to render the Views or HTML pages, and they have their own seesion. For e.g., 
+if a new page is requested on a new browser the session start event will fire. However incaser of API controllers, the session_start event will not fire. Needs to check how we can use the HttpSession for 
+that particular HttpWebAPI request (if it exists at all)

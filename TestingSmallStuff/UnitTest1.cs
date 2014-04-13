@@ -44,12 +44,12 @@ namespace TestingSmallStuff
         [TestMethod]
         public void IsPalindrome()
         {
-            Assert.AreEqual(true, ProjectEuler.ProjectEuler.IsPalidrome(905609));
+            Assert.AreEqual(true, ProjectEuler.ProjectEulerProblems.IsPalidrome(905609));
         }
         [TestMethod]
         public void Problem4()
         {
-            System.Diagnostics.Debug.WriteLine(ProjectEuler.ProjectEuler.Problem4().ToString());
+            System.Diagnostics.Debug.WriteLine(ProjectEuler.ProjectEulerProblems.Problem4().ToString());
             //Assert.AreEqual(true, ProjectEuler.ProjectEuler.Problem4());
         }
     }

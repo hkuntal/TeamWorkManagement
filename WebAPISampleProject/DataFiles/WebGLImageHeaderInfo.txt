@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Root>
+	<NumberOfFrames>1</NumberOfFrames>
+	<ImageType>DERIVED\SECONDARY\MPR\CRV</ImageType>
+	<BitsAllocated>16</BitsAllocated>
+	<BitsStored>12</BitsStored>
+	<HighBit>11</HighBit>
+	<Columns>512</Columns>
+	<Rows>512</Rows>
+	<SamplesPerPixel>1</SamplesPerPixel>
+	<PhotometricInterpretation>MONOCHROME2</PhotometricInterpretation>
+	<PixelRepresentation>0</PixelRepresentation>
+	<WindowCenter>377\40</WindowCenter>
+	<WindowWidth>776\350</WindowWidth>
+	<RescaleIntercept>-1000</RescaleIntercept>
+	<RescaleSlope>1</RescaleSlope>
+	<LossyRescaleIntercept>-691.5</LossyRescaleIntercept>
+	<LossyRescaleSlope>8.38039215686275</LossyRescaleSlope>
+	<ImageOrientation>0.977514604\-0.0231106082\-0.209597466\-5.25968158e-15\0.993976033\-0.109597654</ImageOrientation>
+	<ImagePosition>23.8647399\169.686534\-260.275777</ImagePosition>
+	<PixelSpacing>0.162695304\0.162695304</PixelSpacing>
+	<SliceThickness>1</SliceThickness>
+	<ImageNumber>0</ImageNumber>
+	<StudyNumber>StudyID</StudyNumber>
+	<AcquisitionTime>121249</AcquisitionTime>
+	<Manufacturer>Philips</Manufacturer>
+	<ManufacturerModelName>Brilliance 40</ManufacturerModelName>
+	<ProtocolName>Abdomen CTA BPU/Abdomen/Hx</ProtocolName>
+	<SeriesDescription>MEASURE</SeriesDescription>
+	<SeriesNumber>456020</SeriesNumber>
+	<SeriesUid>1.2.840.113704.7.1.1.2520.1102415758.1</SeriesUid>
+	<ImageComments>MEASURE</ImageComments>
+	<IsMeasurementSafe>true</IsMeasurementSafe>
+	<MaxPixelValue>2137</MaxPixelValue>
+	<MinPixelValue>33</MinPixelValue>
+	<ImageScaleFactor>0</ImageScaleFactor>
+	<SopClassUid>1.2.840.10008.5.1.4.1.1.7</SopClassUid>
+	<SopInstanceUid>1.2.840.113704.7.1.1.2520.1102415758.4</SopInstanceUid>
+	<AreReferencesValid>false</AreReferencesValid>
+</Root>	

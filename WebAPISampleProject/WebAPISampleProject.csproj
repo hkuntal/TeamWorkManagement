@@ -135,6 +135,7 @@
     <Compile Include="Controllers\JQueryController.cs" />
     <Compile Include="Controllers\JSController.cs" />
     <Compile Include="Controllers\KOController.cs" />
+    <Compile Include="Controllers\SetIntervalController.cs" />
     <Compile Include="Controllers\TestAPIController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -214,6 +215,11 @@
     <Content Include="DataFiles\8bitUnsignedImage.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DataFiles\imageData.txt" />
+    <Content Include="DataFiles\ImageHeader.xml" />
+    <Content Include="DataFiles\WebGLDataLossless.txt" />
+    <Content Include="DataFiles\WebGLData_Lossy.txt" />
+    <Content Include="DataFiles\WebGLImageHeaderInfo.txt" />
     <Content Include="favicon.ico" />
     <Content Include="FormatHTML.html" />
     <Content Include="Global.asax" />
@@ -226,12 +232,18 @@
     <Content Include="Scripts\JS\HDate.js" />
     <Content Include="Scripts\JS\HtmlPage123.html" />
     <Content Include="Scripts\JS\Images\Inheritance1.PNG" />
+    <Content Include="Scripts\JS\IndexedDB.js" />
     <Content Include="Scripts\JS\Inheritance.js" />
     <Content Include="Scripts\JS\JSReferences.html" />
+    <Content Include="Scripts\JS\LearnWebGL.js" />
+    <Content Include="Scripts\JS\Libraries\glMatrix-0.9.5.min.js" />
+    <Content Include="Scripts\JS\IndexedDBWrapper.js" />
     <Content Include="Scripts\JS\WebGL.js" />
+    <Content Include="Scripts\JS\WebGLRenderer.js" />
     <Content Include="Scripts\KnockOut\Employee_KO.js" />
     <Content Include="Scripts\KnockOut\Models\EmployeeModel.js" />
     <Content Include="Scripts\WebGL\WebGL.js" />
+    <Content Include="Test.html" />
     <Content Include="ZFPWebClient.html" />
     <None Include="Properties\PublishProfiles\WebAPI.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -263,6 +275,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Images\accent.png" />
@@ -301,12 +314,25 @@
     <Content Include="Views\JS\Date.cshtml" />
     <Content Include="Views\JS\Augment.cshtml" />
     <Content Include="Views\HTML5\WebGL.cshtml" />
+    <Content Include="Views\JS\TestGlobal.cshtml" />
+    <Content Include="Views\SetInterval\Index.cshtml" />
+    <Content Include="Views\JS\JavascriptScope.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LoggingFramework\LoggingFramework.csproj">
+      <Project>{0a5a272e-6616-4f78-9077-baf9f987bdf5}</Project>
+      <Name>LoggingFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XMLUtilities\XMLUtilities.csproj">
+      <Project>{61564d7f-5f8b-49bf-bc86-247fa174fe68}</Project>
+      <Name>XMLUtilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,30 @@
+<ImageHeaders>
+	<ImageHeader>
+		<PatientName>IllVery</PatientName>
+		<Header>
+			{"NumberOfFrames":0,"ImageType":"UNDEFINED\\UNDEFINED\\LOCALIZER","BitsAllocated":"16","BitsStored":"12","HighBit":"11","Columns":"512","Rows":"512","SamplesPerPixel":"1","PhotometricInterpretation":"MONOCHROME2","PixelRepresentation":"0","PixelAspectRatio":"388\\388","WindowCenter":"116.0\\92.0\\400.0\\100.0\\76.0\\76.0","WindowWidth":"241.0\\212.0\\1600.0\\230.0\\258.0\\258.0","RescaleIntercept":"-1024","RescaleSlope":"1","LossyRescaleIntercept":"-525","LossyRescaleSlope":"5.02745098039216","ImageOrientation":"0.0\\1.0\\0.0\\0.0\\0.0\\-1.0","ImagePosition":"0.0\\-218.0\\-130.8","FrameOfReferenceUid":"1.3.12.2.1107.5.8.1.12345678.199508041425490604035","PixelSpacing":"0.7578125\\0.7578125","SliceThickness":"0.0","PatientOrientation":"P\\F","ImageNumber":"22","ImageDate":"19950321","ImageTime":"143319.300","StudyNumber":"AMI.CT.000047","AcquisitionTime":"141922.600","Manufacturer":"SIEMENS","ManufacturerModelName":"SOMATOM PLUS 4","SeriesNumber":"0","SeriesUid":"1.3.12.2.1107.5.8.1.12345678.199508041425490603577.1","ImageComments":"NATIV","IsMeasurementSafe":true,"MaxPixelValue":"1282","MinPixelValue":"875","ImageScaleFactor":0.0,"SopClassUid":"1.2.840.10008.5.1.4.1.1.2","SopInstanceUid":"1.3.12.2.1107.5.8.1.12345678.199508041425490604665.1","AreReferencesValid":false}
+		</Header>
+		<ImagePath>C:\Hariom\Personal\DotNetExperiments\TeamWorkManagement\WebAPISampleProject\DataFiles\imageData.txt</ImagePath>
+	</ImageHeader>
+	<ImageHeader>
+		<PatientName>LLOPIS</PatientName>
+		<Header>
+			{"NumberOfFrames":0,"ImageType":"ORIGINAL\\PRIMARY","BitsAllocated":"16","BitsStored":"12","HighBit":"11","Columns":"4040","Rows":"5416","SamplesPerPixel":"1","PhotometricInterpretation":"MONOCHROME2","PixelRepresentation":"0","WindowCenter":"2047","WindowWidth":"4096","RescaleIntercept":"0","RescaleSlope":"1","LossyRescaleIntercept":"0","LossyRescaleSlope":"16.0588235294118","PixelSpacing":"0.04375\\0.04375","PatientOrientation":"P\\L","ImageNumber":"1","ImageDate":"20140310","ImageTime":"101816","StudyNumber":"0095410002408047","Manufacturer":"KONICA MINOLTA","ManufacturerModelName":"0862","ProtocolName":"MAMMO CC-DCH.","ImagerPixelSpacing":"0.04375\\0.04375","SeriesNumber":"1","SeriesUid":"1.2.392.200036.9107.500.303.8199.819914031000373.121","IsMeasurementSafe":true,"MaxPixelValue":"4095","MinPixelValue":"0","ImageScaleFactor":0.0,"SopClassUid":"1.2.840.10008.5.1.4.1.1.1","SopInstanceUid":"1.2.392.200036.9107.500.303.8199.20140310.102236.171.108199","AreReferencesValid":false}
+		</Header>
+		<ImagePath>C:\Hariom\Personal\DotNetExperiments\TeamWorkManagement\WebAPISampleProject\DataFiles\Valencia_Lossless.txt</ImagePath>
+	</ImageHeader>
+		<ImageHeader>
+		<PatientName>LLOPIS_7MP</PatientName>
+		<Header>
+			{"NumberOfFrames":0,"ImageType":"ORIGINAL\\PRIMARY","BitsAllocated":"16","BitsStored":"12","HighBit":"11","Columns":"1292","Rows":"1732","SamplesPerPixel":"1","PhotometricInterpretation":"MONOCHROME2","PixelRepresentation":"0","WindowCenter":"2047","WindowWidth":"4096","RescaleIntercept":"0","RescaleSlope":"1","LossyRescaleIntercept":"0","LossyRescaleSlope":"16.0588235294118","PixelSpacing":"0.04375\\0.04375","PatientOrientation":"A\\R","ImageNumber":"2","ImageDate":"20140310","ImageTime":"101929","StudyNumber":"0095410002408047","Manufacturer":"KONICA MINOLTA","ManufacturerModelName":"0862","ProtocolName":"MAMMO CC-IZQ.","ImagerPixelSpacing":"0.04375\\0.04375","SeriesNumber":"1","SeriesUid":"1.2.392.200036.9107.500.303.8199.819914031000377.121","IsMeasurementSafe":true,"MaxPixelValue":"4095","MinPixelValue":"0","ImageScaleFactor":0.31980198019801981,"SopClassUid":"1.2.840.10008.5.1.4.1.1.1","SopInstanceUid":"1.2.276.0.7230010.3.1.4.3320250132.4820.1396043405.205","AreReferencesValid":false}
+		</Header>
+		<ImagePath>C:\Hariom\Personal\DotNetExperiments\TeamWorkManagement\WebAPISampleProject\DataFiles\Valencia_7MP_Small.txt</ImagePath>
+	</ImageHeader>
+	<ImageHeader>
+		<PatientName>LEESUNG</PatientName>
+		<Header>
+			{"NumberOfFrames":0,"ImageType":"DERIVED\\PRIMARY\\POST_PROCESSED\\RT\\\\\\\\\\150000","BitsAllocated":"16","BitsStored":"12","HighBit":"11","Columns":"2816","Rows":"2816","SamplesPerPixel":"1","PhotometricInterpretation":"MONOCHROME1","PixelRepresentation":"0","WindowCenter":"2047","WindowWidth":"4095","RescaleIntercept":"0","RescaleSlope":"1","LossyRescaleIntercept":"78.5","LossyRescaleSlope":"15.7764705882353","RescaleType":"US","PixelSpacing":"0.15\\0.15","ImageNumber":"1001","ImageDate":"20130828","ImageTime":"100743.207","SeriesTime":"100742.000","SeriesDate":"20130828","AcquisitionTime":"100742.447","Manufacturer":"FUJIFILM Corporation","ImagerPixelSpacing":"0.15\\0.15","SeriesNumber":"1001","SeriesUid":"1.2.392.200036.9125.3.21219021715274204.64723313237.24201533","IsMeasurementSafe":true,"MaxPixelValue":"4023","MinPixelValue":"157","ImageScaleFactor":0.0,"SopClassUid":"1.2.840.10008.5.1.4.1.1.1","SopInstanceUid":"1.2.392.200036.9125.9.0.286208677.2037366484.2564410442","AreReferencesValid":false}
+		</Header>
+		<ImagePath>C:\Hariom\Personal\DotNetExperiments\TeamWorkManagement\WebAPISampleProject\DataFiles\LeeSung_Lossless.txt</ImagePath>
+	</ImageHeader>
+</ImageHeaders>		
