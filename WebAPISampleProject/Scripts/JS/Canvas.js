@@ -60,7 +60,8 @@ var DrawImageFromZFP = function() {
 
 var getPixelDataFromFileSystemIfNotFoundInIndexedDB = function (patientName) {
     var xmlhttp;
-    var url = "http://3.20.165.88/WebAPISampleProject/HTML5/GetLosslessImage?PatientName=" + patientName;
+    //var url = "http://3.20.165.88/WebAPISampleProject/HTML5/GetLosslessImage?PatientName=" + patientName;
+    var url = HSK.Globals.getUrlTOLaunchStudy("WebAPISampleProject/HTML5/GetLosslessImage?PatientName=" + patientName);
     if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
     } else { // code for IE6, IE5
@@ -76,6 +77,7 @@ var getPixelDataFromFileSystemIfNotFoundInIndexedDB = function (patientName) {
             if (arrayBuffer) {
                 //*********************************Try to save the data in the IndexedDB********************************//
                 SavetheDataInIndexedDB(patientName, false, arrayBuffer);
+                //*********************************Adding Completed ********************************//
                 //Remove the extra 2656 bytes from the arrayBuffer
                 //byteArray.splice(-2655, 2656);
                 DrawLosslessImage(arrayBuffer);
@@ -112,12 +114,15 @@ var GetPixelDataFromFileSystem = function (patientName) {
 
 var DrawImageByReadingImageDataFromFileSystem = function(patientName) {
     //First get the image header
-    $.getJSON("http://3.20.165.88/WebAPISampleProject/HTML5/GetPaitentImageHederInfo?patientName=" + patientName, function (data) {
+    var url = HSK.Globals.getUrlTOLaunchStudy("WebAPISampleProject/HTML5/GetPaitentImageHederInfo?patientName=" + patientName);
+    $.getJSON(url, function (data) {
         if (data == 'Image header not present') {
             alert("Image Header is not present");
         } else {
             console.log("ImageHeaderReceived: " + JSON.stringify(data));
             losslessImageHeader = data;
+            //Check if the image is a color image or a grayscale image
+
             GetPixelDataFromFileSystem(patientName);
         }
     });
@@ -182,12 +187,21 @@ function DrawLosslessImage(arrayBuffer) {
 
     //First the pixel data will be returned from the IndexedDB. If found continue, else get it from the server
     if (!arrayBuffer) {
-        getPixelDataFromFileSystemIfNotFoundInIndexedDB("IllVery");
+        getPixelDataFromFileSystemIfNotFoundInIndexedDB(patientName);
         return;
     }
+
+    if (losslessImageHeader.PhotometricInterpretation == "RGB") {
+        drawColorImage(arrayBuffer);
+    } else {
+        drawGrayScaleImage(arrayBuffer);
+    }
+    
+}
+function drawGrayScaleImage(arrayBuffer) {
     //Convert the blob object into UInt8 array because that is what it is
     var pixeldata = new Uint16Array(arrayBuffer);
-    
+
     //var rows = 512, cols = 512;
     var rows = losslessImageHeader.Rows, cols = losslessImageHeader.Columns;
     var tmpcanvas = document.createElement("canvas"),
@@ -201,7 +215,7 @@ function DrawLosslessImage(arrayBuffer) {
     calculateHULookUp(losslessImageHeader.BitsStored);
     var pixelBuffer = processPixels(pixeldata);
     calculateLookup(losslessImageHeader.BitsStored);
-    
+
     var data = imageData.data;
     if (losslessImageHeader.PhotometricInterpretation == "MONOCHROME2") {
         iteratorfillImageData(data, pixelBuffer);
@@ -211,19 +225,18 @@ function DrawLosslessImage(arrayBuffer) {
     }
 
     imageData.data = data;
-    
+
     tempContext.putImageData(imageData, 0, 0);
-    
+
     //var canvas1 = document.getElementById("dcmCanvasLossy");
     //var tempContext1 = canvas1.getContext("2d");
     //tempContext1.putImageData(imageData, 0, 0);
-    
-    var canvas = document.getElementById("dcmCanvasLossless");
+    var canvasId = "dcmCanvasLossless" + (HSK.Globals.canvasIndex + 1);
+    var canvas = document.getElementById(canvasId);
     var context = canvas.getContext("2d");
     //context.drawImage(tmpcanvas, 0, 0, tmpcanvas.width, tmpcanvas.height);
     context.drawImage(tmpcanvas, 0, 0, canvas.width, canvas.height);
 }
-
 //This functionality does not work
 function DrawLosslessImageWithoutTempCanvas(pixeldata) {
     //It does not work without temp canvas, as the imageData.Data property is read only and cannot be edited

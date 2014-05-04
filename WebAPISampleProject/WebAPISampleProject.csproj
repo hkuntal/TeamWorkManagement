@@ -216,7 +216,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DataFiles\imageData.txt" />
-    <Content Include="DataFiles\ImageHeader.xml" />
+    <Content Include="DataFiles\ImageHeader.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DataFiles\LosslessColor_S3PID_9_11.txt" />
+    <Content Include="DataFiles\LossyColor_S3PID_9_11.txt" />
     <Content Include="DataFiles\WebGLDataLossless.txt" />
     <Content Include="DataFiles\WebGLData_Lossy.txt" />
     <Content Include="DataFiles\WebGLImageHeaderInfo.txt" />
@@ -227,14 +231,18 @@
     <Content Include="Scripts\JQuery\HowJQueryWorks.js" />
     <Content Include="Scripts\JS\AugmentTypes.js" />
     <Content Include="Scripts\JS\Canvas.js" />
+    <Content Include="Scripts\JS\CanvasColor.js" />
     <Content Include="Scripts\JS\FunctionsAndObjects_Part3.js" />
     <Content Include="Scripts\JS\FunctionsAndObjects_Part4.js" />
+    <Content Include="Scripts\JS\Global.js" />
     <Content Include="Scripts\JS\HDate.js" />
     <Content Include="Scripts\JS\HtmlPage123.html" />
     <Content Include="Scripts\JS\Images\Inheritance1.PNG" />
     <Content Include="Scripts\JS\IndexedDB.js" />
     <Content Include="Scripts\JS\Inheritance.js" />
     <Content Include="Scripts\JS\JSReferences.html" />
+    <Content Include="Scripts\JS\JSScopeInCallbacks.js" />
+    <Content Include="Scripts\JS\JSScopeInNestedFunctions.js" />
     <Content Include="Scripts\JS\LearnWebGL.js" />
     <Content Include="Scripts\JS\Libraries\glMatrix-0.9.5.min.js" />
     <Content Include="Scripts\JS\IndexedDBWrapper.js" />
@@ -317,6 +325,8 @@
     <Content Include="Views\JS\TestGlobal.cshtml" />
     <Content Include="Views\SetInterval\Index.cshtml" />
     <Content Include="Views\JS\JavascriptScope.cshtml" />
+    <Content Include="Views\JS\JavascriptScopeCallBacks.cshtml" />
+    <Content Include="Views\JS\JavascriptScopeInNestedFunctions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -21,8 +21,11 @@ namespace TemplateMethodPattern
     {
         //Making the methods virtual makes the Template pattern more flexible, in that Virtual methods can be overridden.
         //However for making a stricter implementation of the Template method, these methods should be made non virtual
+        //This is also called NVI pattern
         public virtual void ExportData()
         {
+            //Allows child classes to provide a different implementation of the alogorithm.
+            //For e.g. GetData and Export Data are implemented differently in different child classes
             GetData();
             LoadData();
             ExportSpecData();

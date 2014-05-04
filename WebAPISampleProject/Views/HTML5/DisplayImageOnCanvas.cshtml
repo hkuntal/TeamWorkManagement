@@ -13,6 +13,8 @@
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
     <script src="~/Scripts/JS/IndexedDB.js"></script>
     <script src="~/Scripts/JS/IndexedDBWrapper.js"></script>
+    <script src="~/Scripts/JS/Global.js"></script>
+    <script src="~/Scripts/JS/CanvasColor.js"></script>
     <script>
         function invokeZfp() {
             var launchUrl = "http://localhost/zfp";
@@ -43,10 +45,31 @@
      {
          display: table-row;
      }
+     .horizontal {
+         float: right;
+     }
+     .main {
+         /*width:90%;*/
+         width:1500px;
+         margin-left: auto;
+         margin-right: auto;
+         background-color: green;
+     }
+     .leftcanvas {
+         margin-left: 5%;
+     }
+     .rightcanvas {
+         margin-right: 5%;
+     }
+     .imgCanvas {
+         height:400px;
+         width:400px;
+         border: 1px solid black;
+     }
      </style>
 
 </head>
-    <body>
+    <body style="background-color: greenyellow">
         <button onclick="invokeZfp()">Invoke ZFP</button>
         <button onclick="DisplayImageAgain()">Display Lossless Image Again</button>
         <div>
@@ -60,27 +83,55 @@
             @*<img id="forCanvas" height="512" width="512"/>*@
             <canvas id="forCanvas" height="10" width="10" style="border:1px solid black"></canvas>
         </div>
-        <div class="row">
-            <div class="sampleImg">
+        
+        @*<div class="sampleImg">
                 <canvas id="dcmCanvasLossy" height="400" width="400" style="border:1px solid black"></canvas>
                 <div>
                     <span>Lossy Image</span>
                 </div>
-            </div>
-    
-            <div class="sampleImg">
-                <canvas id="dcmCanvasLossless" height="600" width="300" style="border:1px solid black"></canvas>
-                <div>
-                    <span>Lossless Image</span>
+            </div>*@
+        <div class="main">
+            <div>
+                <div class="horizontal rightcanvas">
+                    <canvas id="dcmCanvasLossless2" class="imgCanvas"></canvas>
+                    <div>
+                        <span>Image no. 2: Lossless Image Using Canvas</span>
+                    </div>
+                </div>
+                <div class="leftcanvas">
+                    <canvas id="dcmCanvasLossless0" class="imgCanvas"></canvas>
+                    <div>
+                        <span>Image no. 1: Lossless Image Using Canvas</span>
+                    </div>
                 </div>
             </div>
+            <div>
+            <div class="horizontal rightcanvas">
+                <canvas id="dcmLosslessWebGL1" class="imgCanvas"></canvas>
+                <div>
+                    <span>Image no. 4: Lossless Image Using WebGL</span>
+                </div>
+            </div>
+                <div class="leftcanvas">
+                    <canvas id="dcmLosslessWebGL2" class="imgCanvas"></canvas>
+                    <div>
+                        <span>Image no. 3: Lossless Image Using WebGL</span>
+                    </div>
+                </div>
+             </div>
         </div>
         <script>
         //http://jsfiddle.net/gtKBs/
         //DrawImage(); //Draws the car image on the Canvas
         //DrawImageFromZFP(); //Draws image by launching study in Zfp and calling their image APIs to retrieve the image byte array
-            var patientName = "IllVery"; //"LEESUNG"; //"LLOPIS_7MP"; //"LLOPIS";
+            //var patientName = "IllVery"; //"LEESUNG"; //"LLOPIS_7MP"; //"LLOPIS";
+            //DrawImageByReadingImageDataFromFileSystem(patientName);
+            patientName = "Color";
             DrawImageByReadingImageDataFromFileSystem(patientName);
+            //patientName = "LEESUNG";
+            //DrawImageByReadingImageDataFromFileSystem(patientName);
+            //patientName = "LLOPIS";
+            //DrawImageByReadingImageDataFromFileSystem(patientName);
         </script>
     </body>
 </html>

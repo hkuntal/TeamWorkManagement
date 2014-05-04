@@ -27,4 +27,11 @@
 		</Header>
 		<ImagePath>C:\Hariom\Personal\DotNetExperiments\TeamWorkManagement\WebAPISampleProject\DataFiles\LeeSung_Lossless.txt</ImagePath>
 	</ImageHeader>
+	<ImageHeader>
+		<PatientName>Color</PatientName>
+		<Header>
+			{"NumberOfFrames":1,"ImageType":"DERIVED\\SECONDARY\\","BitsAllocated":"8","BitsStored":"8","HighBit":"7","Columns":"512","Rows":"512","SamplesPerPixel":"3","PhotometricInterpretation":"RGB","PixelRepresentation":"0","PlanarConfiguration":"0","RescaleIntercept":"0","RescaleSlope":"1","RescaleType":"US","ImageNumber":"1","ImageDate":"20130120","ImageTime":"125241","StudyNumber":"18212","Manufacturer":"Vital Images, Inc","ManufacturerModelName":"Vitrea 2","SeriesDescription":"circle of willis","SeriesNumber":"501","SeriesUid":"1.2.840.113747.1358707962.4044.11112.3619053228253.0","IsMeasurementSafe":false,"PixelDataValueRepresentation":"OB","ImageScaleFactor":0.0,"SopClassUid":"1.2.840.10008.5.1.4.1.1.7","SopInstanceUid":"1.2.840.113747.1358707962.4044.11112.3619053228253.2","AreReferencesValid":false}
+		</Header>
+		<ImagePath>C:\Hariom\Personal\DotNetExperiments\TeamWorkManagement\WebAPISampleProject\DataFiles\LosslessColor_S3PID_9_11.txt</ImagePath>
+	</ImageHeader>
 </ImageHeaders>		

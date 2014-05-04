@@ -35,9 +35,38 @@ namespace WebAPISampleProject.Controllers
         //{
             
         //}
+        public ActionResult JavascriptScopeInNestedFunctions()
+        {
+            return View();
+        }
         public ActionResult JavascriptScope()
         {
             return View();
+        }
+        public ActionResult JavascriptScopeCallBacks()
+        {
+            return View();
+        }
+        public string GetFodderRequired(string time)
+        {
+            string fodder = "";
+            switch (time)
+            {
+                case "morning":
+                    fodder = "100";
+                    break;
+                case "afternoon":
+                    fodder = "200";
+                    break;
+                case "evening":
+                    fodder = "300";
+                    break;
+                default:
+                    fodder = "none";
+                    break;
+                  
+            }
+            return fodder;
         }
     }
 }

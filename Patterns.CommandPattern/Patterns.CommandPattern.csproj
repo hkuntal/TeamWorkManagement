@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{870BC8A4-CD13-4E47-9631-FB6A093B4CFC}</ProjectGuid>
+    <ProjectGuid>{3B96E204-E91E-4659-9B7A-50DED207A0E9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebSocketServer</RootNamespace>
-    <AssemblyName>WebSocketServer</AssemblyName>
+    <RootNamespace>Patterns.CommandPattern</RootNamespace>
+    <AssemblyName>Patterns.CommandPattern</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICommand.cs" />
+    <Compile Include="LightsOnCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
