@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DBconnection>
+	<EAdatabase>
+		<Archives pixEnabled="false">
+			<Archive appserver="3.20.164.156" sqlserver="3.20.164.156" name = "DCMARCH1" userId="EaUser" password="7E4Zq6BePBsvX6KeTSTnJg7rHRLhBzOQUTvgfpR7gDs=" archive="ARCH1" aeTitle="AE_ARCH1" useWindowsAuthentication="false"/>
+			<Archive appserver="3.20.164.156" sqlserver="3.20.164.156" name = "DCMARCH11" userId="EaUser" password="7E4Zq6BePBsvX6KeTSTnJg7rHRLhBzOQUTvgfpR7gDs=" archive="ARCH11" aeTitle="AE_ARCH11" useWindowsAuthentication="false"/>
+		</Archives>
+		<ConnectionError>
+			<ConnectionRetryNumber>3</ConnectionRetryNumber>
+			<ConnectionRetryInterval>1</ConnectionRetryInterval>
+			<ErrorCode>1601,1205,1602,701</ErrorCode>
+		</ConnectionError>
+	</EAdatabase>
+	<CPACSdatabase>
+		<databaseInfo DataSource="3.28.72.94" Port = "20000" Database="ims" Username="ZPACSTEST" Password="HbMkHA7SMoSQLusRmijouDgOJcpH6iNLxX14ktA1Ubk=" StsId="1" Pooling="True" Charset ="Default" TextSize="2147483648" PacketSize="2048"/>
+		<ConnectionError>
+			<ConnectionRetryNumber>2</ConnectionRetryNumber>
+			<ConnectionRetryInterval>1</ConnectionRetryInterval>
+			<ErrorCode>1202,3562</ErrorCode>
+		</ConnectionError>
+	</CPACSdatabase>
+</DBconnection>
+

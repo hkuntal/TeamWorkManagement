@@ -11,6 +11,8 @@ namespace Patterns.CommandPattern
         static void Main(string[] args)
         {
             //The code implements the COmmand pattern from the HeadFirst Book
+            Client.ExecuteCommandPattern();
+            Console.ReadLine();
         }
     }
 }

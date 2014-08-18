@@ -29,5 +29,10 @@ namespace WebAPISampleProject
         {
             Logger.LogInformation("New Session created with SessionId as:" + HttpContext.Current.Session.SessionID);
         }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+            Logger.LogInformation("Session ended with SessionId as:" + HttpContext.Current.Session.SessionID);
+        }
     }
 }

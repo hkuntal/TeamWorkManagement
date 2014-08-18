@@ -332,6 +332,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HttpHandlers\HttpHandlers.csproj">
+      <Project>{17e6b105-550b-4ea0-b801-a24e60084dc8}</Project>
+      <Name>HttpHandlers %28OtherStuff\ASP.Net\HttpHandlers\HttpHandlers%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HttpModules\HttpModules.csproj">
+      <Project>{1f8ea865-2858-4b53-85b1-f9462f348dba}</Project>
+      <Name>HttpModules %28OtherStuff\ASP.Net\HttpModules\HttpModules%29</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

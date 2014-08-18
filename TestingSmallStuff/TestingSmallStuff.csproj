@@ -55,6 +55,10 @@
     <Compile Include="TestYield.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CSharpExamplesToBeUnitTested\CSharpExamplesToBeUnitTested.csproj">
+      <Project>{577cb2ee-1ccb-4ce0-a16f-37a2c38191b2}</Project>
+      <Name>CSharpExamplesToBeUnitTested</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjectEuler\ProjectEuler.csproj">
       <Project>{16f1fff4-608b-47f2-a4ec-a584e61346ed}</Project>
       <Name>ProjectEuler</Name>

@@ -32,6 +32,7 @@ namespace WebAPISampleProject.Controllers
         // GET api/values/5
         public string Get(int id)
         {
+            System.Web.HttpContext.Current.Session["Name"] = "Hariom";
             return "value";
         }
 

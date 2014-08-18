@@ -10,6 +10,8 @@ namespace SocketServer
     {
         static void Main(string[] args)
         {
+            SynchronousSocketListener.StartListening();
+            
         }
     }
 }

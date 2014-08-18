@@ -215,12 +215,22 @@
     <Content Include="DataFiles\8bitUnsignedImage.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DataFiles\Huron_Lossless1.txt" />
+    <Content Include="DataFiles\Huron_Lossless2.txt" />
+    <Content Include="DataFiles\Huron_Lossy1.txt" />
+    <Content Include="DataFiles\Huron_Lossy2.txt" />
     <Content Include="DataFiles\imageData.txt" />
     <Content Include="DataFiles\ImageHeader.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="DataFiles\LeeSung_Lossless.txt" />
+    <Content Include="DataFiles\LeeSung_Lossy.txt" />
     <Content Include="DataFiles\LosslessColor_S3PID_9_11.txt" />
     <Content Include="DataFiles\LossyColor_S3PID_9_11.txt" />
+    <Content Include="DataFiles\Valencia_7MP.txt" />
+    <Content Include="DataFiles\Valencia_7MP_Small.txt" />
+    <Content Include="DataFiles\Valencia_Lossless.txt" />
+    <Content Include="DataFiles\Valencia_Lossy.txt" />
     <Content Include="DataFiles\WebGLDataLossless.txt" />
     <Content Include="DataFiles\WebGLData_Lossy.txt" />
     <Content Include="DataFiles\WebGLImageHeaderInfo.txt" />
@@ -252,6 +262,7 @@
     <Content Include="Scripts\KnockOut\Models\EmployeeModel.js" />
     <Content Include="Scripts\WebGL\WebGL.js" />
     <Content Include="Test.html" />
+    <Content Include="XMLFile1.xml" />
     <Content Include="ZFPWebClient.html" />
     <None Include="Properties\PublishProfiles\WebAPI.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -327,6 +338,7 @@
     <Content Include="Views\JS\JavascriptScope.cshtml" />
     <Content Include="Views\JS\JavascriptScopeCallBacks.cshtml" />
     <Content Include="Views\JS\JavascriptScopeInNestedFunctions.cshtml" />
+    <Content Include="Views\JQuery\Tooltip.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
     <Compile Include="ICommand.cs" />
-    <Compile Include="LightsOnCommand.cs" />
+    <Compile Include="Invoker.cs" />
+    <Compile Include="Receiver.cs" />
+    <Compile Include="Commands.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

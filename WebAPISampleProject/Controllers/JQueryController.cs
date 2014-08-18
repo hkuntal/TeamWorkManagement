@@ -21,5 +21,9 @@ namespace WebAPISampleProject.Controllers
             return View();
         }
 
+        public ActionResult Tooltip()
+        {
+            return View();
+        }
     }
 }

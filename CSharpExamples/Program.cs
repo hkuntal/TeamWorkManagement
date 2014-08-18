@@ -11,11 +11,14 @@ namespace CSharpExamples
     {
         private static void Main(string[] args)
         {
-            //CheckStaticMethods();
+            CheckStaticMethods();
             //Debug.WriteLine("Testing");
             //Collections.TestCollection();
             
             //ProcessFlatFiles();
+
+            //Test the Closures
+            CSharpClosures.Test();
 
             Console.WriteLine("Hariom");
             //Investigate ob = new Investigate();
@@ -40,6 +43,8 @@ namespace CSharpExamples
             Console.WriteLine("Calling the lazy method");
             var c = StaticClass.StaticMember4;
             Console.WriteLine(c.Value.ToString());
+
+            throw new DivideByZeroException();
             
         }
 

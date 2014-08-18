@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CSharpExamplesToBeUnitTested;
 
 namespace TestingSmallStuff
 {
@@ -52,5 +53,13 @@ namespace TestingSmallStuff
             System.Diagnostics.Debug.WriteLine(ProjectEuler.ProjectEulerProblems.Problem4().ToString());
             //Assert.AreEqual(true, ProjectEuler.ProjectEuler.Problem4());
         }
+
+        [TestMethod]
+        public void BaseChildClassConstructorCalls()
+        {
+            CSharpExamplesToBeUnitTested.Child obj = new Child(5);
+            
+        }
+        
     }
 }

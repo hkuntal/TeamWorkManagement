@@ -1,0 +1,83 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Tooltip</title>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#juitip").click(function () {
+                $("#juitip").hide();
+            });
+            $("#juitip").tooltip();
+            //$("#juitip").tooltip({ content: "Awsome Title" });
+            $("#juitip").tooltip("option", "content", "Awesome title!");
+
+        });
+
+        function displayTooltipOnMuseOver(evt) {
+            //return;
+            //alert("Tooltip method called");
+            //var a = document.getElementById("tiptext");
+            var a = "#tiptext";
+            $(a).toggle();
+
+            //$("#tiptext").show();
+            //if ($("#tiptext").visible()) {
+                var offset = $("#extip").offset();
+                $("#tiptext").css({ left: offset.left, top: offset.top });
+            //}
+            //$("#anotherElementName").css({ left: x, top: y });
+            //a.setAttribute("visibility", "visible");
+
+            //$("#svgtext2").toggle(); //--> This works
+            
+        }
+        var handler = function () {
+            alert("The quick brown fox jumps over the lazy dog.");
+            $("#simple").unbind("click", handler);
+        };
+        $("#simple").bind("click", handler);
+        function unbindmouseClick() {
+            $("#simple").unbind("click", handler);
+        }
+    </script>
+</head>
+<body>
+    <div id="parentdiv">
+        <div style="margin: 25px">
+            This is for testing out the JQuery UI tooltip on a DIV
+        </div>
+        <div>
+            <div id="simple" style="margin: 25px" title="This is using Javascript title feature">
+                This is with simple Native Title support
+            </div>
+            <div id="juitip" style="margin: 25px; top:100px" title="">
+                This is usign the JQuery UI feature of the tooltip
+            </div>
+
+            <div id="extip" style="margin: 25px" onmouseover="displayTooltipOnMuseOver(this)">
+                This will display another div on itself as a tooltip
+            </div>
+
+        </div>
+        
+        <div>
+        
+        
+            <svg height="300" width="600" title="Hariom Kuntal">
+                <text id="svgtext1" x="10" y="10" fill="red" visibility="visible" >I love SVG!</text>
+
+                <text id="svgtext2" fill="black" x="10" id="tooltip" font-size="50" y="50">I Love SVG</text></svg>
+
+        </div>
+    </div>
+    <div id="tiptext" style="background-color: chocolate;position:absolute"><span><h3>This text is for displaying as a tooltip</h3></span></div>
+</body>
+</html>
