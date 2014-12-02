@@ -27,12 +27,12 @@ namespace WebAPISampleProject
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Logger.LogInformation("New Session created with SessionId as:" + HttpContext.Current.Session.SessionID);
+            //Logger.LogInformation("New Session created with SessionId as:" + HttpContext.Current.Session.SessionID);
         }
 
         protected void Session_End(object sender, EventArgs e)
         {
-            Logger.LogInformation("Session ended with SessionId as:" + HttpContext.Current.Session.SessionID);
+            //Logger.LogInformation("Session ended with SessionId as:" + HttpContext.Current.Session.SessionID);
         }
     }
 }

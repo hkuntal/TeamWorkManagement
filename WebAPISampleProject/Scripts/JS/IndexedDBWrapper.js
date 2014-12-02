@@ -4,7 +4,7 @@ var indb = new Test.IndexedDatabase();
 indb.initializeIndexedDatabase();
 
 function gettheDataFromIndexedDB(key, isLossy, callback) {
-    indb.getArrayBufferFromIndexedDatabase(patientName, false, callback);
+    indb.getArrayBufferFromIndexedDatabase(key, isLossy, callback);
 }
 
 function SavetheDataInIndexedDB(key, islossy, data) {

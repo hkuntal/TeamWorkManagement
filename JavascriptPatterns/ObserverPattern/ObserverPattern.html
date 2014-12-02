@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="ObserverPattern.js"></script>
+</head>
+    <body>
+        <button id="addNewObserver">Add New Observer checkbox</button>
+        <input id="mainCheckbox" type="checkbox"/>
+        <div id="observersContainer"></div>
+
+    </body>
+    <script>
+        function extend(extension, obj) {
+            for (var key in extension) {
+                obj[key] = extension[key];
+            }
+        }
+        
+        // References to our DOM elements
+ 
+        var controlCheckbox = document.getElementById( "mainCheckbox" ),
+          addBtn = document.getElementById( "addNewObserver" ),
+          container = document.getElementById( "observersContainer" );
+
+        extend(new Subject(), controlCheckbox);
+        
+        // clicking the checkbixes should notify its observers
+        // register an observer with the subject 
+        controlCheckbox.addObserver();
+        
+    </script>
+</html>

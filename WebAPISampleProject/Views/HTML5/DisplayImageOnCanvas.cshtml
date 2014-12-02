@@ -15,6 +15,7 @@
     <script src="~/Scripts/JS/IndexedDBWrapper.js"></script>
     <script src="~/Scripts/JS/Global.js"></script>
     <script src="~/Scripts/JS/CanvasColor.js"></script>
+    <script src="~/Scripts/JS/CanvasRenderer.js"></script>
     <script>
         function invokeZfp() {
             var launchUrl = "http://localhost/zfp";
@@ -22,7 +23,7 @@
         }
         function DisplayImageAgain() {
             alert("Displaying image again");
-            DrawImageByReadingImageDataFromFileSystem(patientName);
+            DisplaySampleLosslesImages();
         }
     </script>
  <style type="text/css">
@@ -93,7 +94,7 @@
         <div class="main">
             <div>
                 <div class="horizontal rightcanvas">
-                    <canvas id="dcmCanvasLossless2" class="imgCanvas"></canvas>
+                    <canvas id="dcmCanvasLossless1" class="imgCanvas"></canvas>
                     <div>
                         <span>Image no. 2: Lossless Image Using Canvas</span>
                     </div>
@@ -125,14 +126,19 @@
         //DrawImage(); //Draws the car image on the Canvas
         //DrawImageFromZFP(); //Draws image by launching study in Zfp and calling their image APIs to retrieve the image byte array
             //var patientName = "IllVery"; //"LEESUNG"; //"LLOPIS_7MP"; //"LLOPIS";
-            var patientName = "Huron1";
-            //DrawImageByReadingImageDataFromFileSystem(patientName);
-            //patientName = "Color";
-            DrawImageByReadingImageDataFromFileSystem(patientName);
-            //patientName = "LEESUNG";
-            //DrawImageByReadingImageDataFromFileSystem(patientName);
-            //patientName = "LLOPIS";
-            //DrawImageByReadingImageDataFromFileSystem(patientName);
+            var patientName = "";
+            function DisplaySampleLosslesImages() {
+                HSK.Globals.canvasIndex = -1;
+                //DrawImageByReadingImageDataFromFileSystem(patientName);
+                //patientName = "Color";
+                //DrawImageByReadingImageDataFromFileSystem(patientName);
+                //patientName = "LLOPIS";
+                //DrawImageByReadingImageDataFromFileSystem(patientName);
+                patientName = "ZfpUs"; //"ZfpUs"; LEESUNG
+                DrawImageByReadingImageDataFromFileSystem(patientName);
+            }
+
+            DisplaySampleLosslesImages();
         </script>
     </body>
 </html>

@@ -76,11 +76,11 @@ var getPixelDataFromFileSystemIfNotFoundInIndexedDB = function (patientName) {
             //Display this data on the canvas
             if (arrayBuffer) {
                 //*********************************Try to save the data in the IndexedDB********************************//
-                SavetheDataInIndexedDB(patientName, false, arrayBuffer);
+                //SavetheDataInIndexedDB(patientName, false, arrayBuffer);
                 //*********************************Adding Completed ********************************//
                 //Remove the extra 2656 bytes from the arrayBuffer
                 //byteArray.splice(-2655, 2656);
-                DrawLosslessImage(arrayBuffer);
+                DrawLosslessImage(arrayBuffer, patientName);
                 //DrawLosslessImageWithoutTempCanvas(byteArray);
             }
         }
@@ -91,25 +91,10 @@ var getPixelDataFromFileSystemIfNotFoundInIndexedDB = function (patientName) {
 };
 
 var GetPixelDataFromFileSystem = function (patientName) {
-    //Check if the image is there in the IndexedDB database
-    gettheDataFromIndexedDB(patientName, false, DrawLosslessImage);
+    //Check if the image is there in the IndexedDB database, and uncomment DrawLosslessImage method if u comment the below line
+    //gettheDataFromIndexedDB(patientName, false, DrawLosslessImage);
 
-    //$.ajax({
-    //    type: 'GET',
-    //    async: true,
-    //    url: "http://3.20.165.88/HTML5/GetLosslessImage",
-    //    //contentType: "application/json; charset=utf-8",
-
-
-    //    contentType: 'application/x-www-form-urlencoded',
-    //    dataType: 'json',
-    //    cache: false
-    //})
-    //    .done(function(data) {
-    //        //Don't do anything/ Just log the results
-    //        console.log(data);
-    //        launchStudyInZFPAndDisplayImagesReceivedFromZfpApi();
-    //    });
+    DrawLosslessImage(null, patientName);
 };
 
 var DrawImageByReadingImageDataFromFileSystem = function(patientName) {
@@ -183,7 +168,7 @@ function DisplayLosslessImage(sui, sop) {
     });
 }
 
-function DrawLosslessImage(arrayBuffer) {
+function DrawLosslessImage(arrayBuffer, patientName) {
 
     //First the pixel data will be returned from the IndexedDB. If found continue, else get it from the server
     if (!arrayBuffer) {
@@ -193,6 +178,7 @@ function DrawLosslessImage(arrayBuffer) {
 
     if (losslessImageHeader.PhotometricInterpretation == "RGB") {
         drawColorImage(arrayBuffer);
+        //drawColorImageUsingWebworker(arrayBuffer);
     } else {
         drawGrayScaleImage(arrayBuffer);
     }
@@ -231,11 +217,13 @@ function drawGrayScaleImage(arrayBuffer) {
     //var canvas1 = document.getElementById("dcmCanvasLossy");
     //var tempContext1 = canvas1.getContext("2d");
     //tempContext1.putImageData(imageData, 0, 0);
-    var canvasId = "dcmCanvasLossless" + (HSK.Globals.canvasIndex + 1);
-    var canvas = document.getElementById(canvasId);
-    var context = canvas.getContext("2d");
-    //context.drawImage(tmpcanvas, 0, 0, tmpcanvas.width, tmpcanvas.height);
-    context.drawImage(tmpcanvas, 0, 0, canvas.width, canvas.height);
+    //var canvasId = "dcmCanvasLossless" + (HSK.Globals.canvasIndex + 1);
+    //var canvas = document.getElementById(canvasId);
+    //var context = canvas.getContext("2d");
+    ////context.drawImage(tmpcanvas, 0, 0, tmpcanvas.width, tmpcanvas.height);
+    //context.drawImage(tmpcanvas, 0, 0, canvas.width, canvas.height);
+
+    renderImageonCanvas(tmpcanvas);
 }
 //This functionality does not work
 function DrawLosslessImageWithoutTempCanvas(pixeldata) {

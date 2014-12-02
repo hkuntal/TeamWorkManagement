@@ -215,6 +215,8 @@
     <Content Include="DataFiles\8bitUnsignedImage.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DataFiles\colorimage.txt" />
+    <Content Include="DataFiles\colorimage_zfpus.txt" />
     <Content Include="DataFiles\Huron_Lossless1.txt" />
     <Content Include="DataFiles\Huron_Lossless2.txt" />
     <Content Include="DataFiles\Huron_Lossy1.txt" />
@@ -242,11 +244,15 @@
     <Content Include="Scripts\JS\AugmentTypes.js" />
     <Content Include="Scripts\JS\Canvas.js" />
     <Content Include="Scripts\JS\CanvasColor.js" />
+    <Content Include="Scripts\JS\CanvasRenderer.js" />
+    <Content Include="Scripts\JS\ConnectionManager.js" />
     <Content Include="Scripts\JS\FunctionsAndObjects_Part3.js" />
     <Content Include="Scripts\JS\FunctionsAndObjects_Part4.js" />
     <Content Include="Scripts\JS\Global.js" />
     <Content Include="Scripts\JS\HDate.js" />
     <Content Include="Scripts\JS\HtmlPage123.html" />
+    <Content Include="Scripts\JS\ImageManager.js" />
+    <Content Include="Scripts\JS\ImageProcessingWorker.js" />
     <Content Include="Scripts\JS\Images\Inheritance1.PNG" />
     <Content Include="Scripts\JS\IndexedDB.js" />
     <Content Include="Scripts\JS\Inheritance.js" />
@@ -262,7 +268,9 @@
     <Content Include="Scripts\KnockOut\Models\EmployeeModel.js" />
     <Content Include="Scripts\WebGL\WebGL.js" />
     <Content Include="Test.html" />
-    <Content Include="XMLFile1.xml" />
+    <Content Include="XMLFile1.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="ZFPWebClient.html" />
     <None Include="Properties\PublishProfiles\WebAPI.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />

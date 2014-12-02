@@ -1,6 +1,6 @@
 ﻿var HSK = HSK || {};
 HSK.Globals = HSK.Globals || {};
-HSK.Globals.IpAddress = "169.254.141.124";
+HSK.Globals.IpAddress = "localhost";
 HSK.Globals.canvasIndex = -1;
 
 HSK.Globals.getUrlTOLaunchStudy = function (url) {
