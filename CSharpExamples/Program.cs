@@ -1,35 +1,128 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
-namespace CSharpExamples
+using System.Web.Script.Serialization;
+using GEHealthcare.ZFP.Model.Request;
+using GEHealthcare.ZFP.Model.Types;
+
+namespace WebApiServicesClient
 {
     internal class Program
     {
         private static void Main(string[] args)
-        {
-            CheckStaticMethods();
-            //Debug.WriteLine("Testing");
-            //Collections.TestCollection();
-            
-            //ProcessFlatFiles();
+        {          
 
-            //Test the Closures
-            CSharpClosures.Test();
-
-            Console.WriteLine("Hariom");
-            //Investigate ob = new Investigate();
-            //ob.TestArray();
-            //Console.WriteLine(ob.GenericMethod<int>("hariom"));
+            // This is to check calling of web methods through C# and Ajax like functionality
+            //CallWebMethods();
+            //ConvertDicomToXml();
+            CheckObjectEquality();
             Console.ReadLine();
-
+            // Writes to the output window in the visual studio
             Debug.WriteLine("Harioms Debug Window");
 
         }
+        private static void CheckObjectEquality()
+        {
+            var a = new Person {FirstName = "Hariom", LastName = "Kuntal"};
+            var b = new Person {FirstName = "Hariom", LastName = "Kuntal"};
 
+            Console.WriteLine(a == b);
+            Console.WriteLine(a.Equals(b));
+        }
+        private static void ConvertDicomToXml()
+        {
+            string filename = @"C:\Hariom\imageHeaderdata_BlackImage - Copy.txt";
+            string outputName = @"C:\Hariom\outputimageHeaderdata_BlackImage.txt";
+
+            Stream ms;
+            using (FileStream SourceStream = File.Open(filename, FileMode.Open))
+            {
+               ms = GEHealthcare.Isip.Dicom.Text.DicomToXml.Convert(SourceStream);
+
+               using (FileStream file = new FileStream(outputName, FileMode.Create, System.IO.FileAccess.Write))
+               {
+                   byte[] bytes = new byte[ms.Length];
+                   ms.Read(bytes, 0, (int)ms.Length);
+                   file.Write(bytes, 0, bytes.Length);
+                   ms.Close();
+               }
+            }
+        }
+        private static void CallWebMethods()
+        {
+            using (var client = new HttpClient())
+            {
+                // New code:
+                //client.BaseAddress = new Uri("http://localhost/ZFPConverge/Dicom/StudySearch/QueryStudyList");
+                //client.DefaultRequestHeaders.Accept.Clear();
+                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var patientHistoryRequest = new PatientHistoryRequest
+                    {
+                        PrimaryStudyInstanceUid = "1.2.528.1.1001.1.960113006.200.2.19960306.125615749",
+                        PatientRef = new PatientRef
+                            {
+                                PatientName = "Ill^Very",
+                                PatientId = "1000026000",
+                                AuthorityShortCode = "SYS_A"
+                            },
+                            WorkListType = WorkListType.All,
+                        ApplicationMode = AppMode.StandAloneLaunch
+                    };
+
+                //const string url = "http://localhost/ZFPConverge/Dicom/StudySearch/GetPatientHistoryForNavigator";
+                const string url = "http://3.232.167.176/ZFP.Services/ZfpServices/Dicom/StudySearch/GetPatientHistoryForNavigator";
+                var webReq = System.Net.WebRequest.Create(url);
+                webReq.Method = "POST";
+                webReq.ContentType = "application/json; charset=utf-8";
+
+                //var ser = new DataContractJsonSerializer(patientHistoryRequest.GetType());
+                var writer = new StreamWriter(webReq.GetRequestStream());
+
+                var jss = new JavaScriptSerializer();
+                string rdata = jss.Serialize(patientHistoryRequest);
+                Console.WriteLine("RequestData: " + rdata);
+                writer.Write(rdata);
+                writer.Close();
+
+                var response = webReq.GetResponse();
+// ReSharper disable AssignNullToNotNullAttribute
+                var streamReader = new StreamReader(stream: response.GetResponseStream());
+// ReSharper restore AssignNullToNotNullAttribute
+                string apiData = streamReader.ReadToEnd(); // Gives you the Jason data
+                // Deserialize the data in to the object
+                Console.WriteLine("ResponseData: "+ apiData);
+                
+                //webReq.Headers.Add("URL", "http://localhost:13381/IntegrationCheck/Default.aspx");
+                //System.Net.WebResponse webResp = webReq.GetResponse();
+                //System.IO.StreamReader sr = new System.IO.StreamReader(webResp.GetResponseStream());
+                //string s = sr.ReadToEnd().Trim();
+
+
+                //response = await client.PostAsJsonAsync("api/products", patientHistoryRequest);
+                //if (response.IsSuccessStatusCode)
+                //{
+                //    // Get the URI of the created resource.
+                //    Uri gizmoUrl = response.Headers.Location;
+                //}
+                //HttpWebRequest request = WebRequest.Create("http://localhost/ZFPConverge/Dicom/StudySearch/QueryStudyList") as HttpWebRequest;
+                ////optional
+                //request.Method = "POST";
+
+                //HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                //Stream stream = response.GetResponseStream();
+
+
+            }
+        }
         private static void CheckStaticMethods()
         {
             Console.WriteLine("Trying to access static members");
@@ -142,6 +235,7 @@ namespace CSharpExamples
                 ProcessTheClientLogFile();
             }
         }
+        
         private class Investigate
         {
             public string GenericMethod<T>(string parameter)
@@ -352,6 +446,36 @@ namespace CSharpExamples
                     }
                 }
             }
+        }
+
+        public static void TestValuesOfRefrenceObjects()
+        {
+            Person obj = null;
+            // create the persopn pbject
+            var p1 = new Person {FirstName = "Hariom", LastName = "Kuntal"};
+
+            var dict = new Dictionary<int, Person>();
+            dict.Add(1, p1);
+
+            var val = dict[1];
+            Console.WriteLine(val.LastName);
+
+            //p1.LastName = "Ruby";
+            var p2 = new Person { FirstName = "Hariom", LastName = "Singh" };
+            dict[1] = p2;
+            Console.WriteLine(val.LastName);
+
+            obj = p1;
+            Console.WriteLine(obj.LastName);
+            obj = p2;
+            Console.WriteLine(obj.LastName);
+
+        }
+        
+        public class Person
+        {
+            public string  FirstName { get; set; }
+            public string LastName { get; set; }
         }
     }
 }

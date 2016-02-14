@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <style>
+            .canvasDiv {
+                display: inline-block;
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div>
+                Hi with this app you can window level on a lossless image
+            </div>
+            <div class="canvasDiv">
+                <canvas id="canvas1" height="800" width="800" style="border:1px solid black" onmousedown="mouseDownEvent(event)" onmouseup="mouseUpEvent()" ></canvas>
+            </div>
+            <div id="outputLog" class="canvasDiv">
+                Hey
+            </div>
+            <div>
+                <input type="file" id="files" name="files[]" multiple />
+                <output id="list"></output>
+            </div>
+            <div>
+                <button id="displayImage" onclick="drawImage()">Display Image</button>
+            </div>
+        </div>
+        <script src="Javascript/LoadImage.js"></script>
+    </body>
+</html>

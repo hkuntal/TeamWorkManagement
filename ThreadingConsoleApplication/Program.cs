@@ -8,26 +8,42 @@ namespace ThreadingConsoleApplication
 {
     class Program
     {
-        //static void Main(string[] args)
-        //{
-        //    //Thread thread1 = new Thread(new ThreadStart(EntryPoint.ThreadFunc1));
-        //    //thread1.IsBackground = true;
-        //    //thread1.Start();
+        static void Main(string[] args)
+        {
+            //Thread thread1 = new Thread(new ThreadStart(EntryPoint.ThreadFunc1));
+            //thread1.IsBackground = true;
+            //thread1.Start();
 
-        //    //Thread thread2 = new Thread(new ThreadStart(EntryPoint.ThreadFunc2));
-        //    //thread2.Start();
-        //    //Console.WriteLine("Exiting Main Thread");
+            //Thread thread2 = new Thread(new ThreadStart(EntryPoint.ThreadFunc2));
+            //thread2.Start();
+            //Console.WriteLine("Exiting Main Thread");
 
-        //    //Testing the simple wait lock class
-        //    WorkerClass objWorkerClass = new WorkerClass(); 
-        //    Thread t1 = new Thread(new ThreadStart(objWorkerClass.DoSomeWork));
+            //Testing the simple wait lock class
+            WorkerClass objWorkerClass = new WorkerClass();
+            //Thread t1 = new Thread(new ThreadStart(objWorkerClass.DoSomeWork));
 
-        //    Thread t2 = new Thread(new ThreadStart(objWorkerClass.DoSomeWork));
-        //    //Start the first thread
-        //    t1.Start();
-        //    //Start the second thread
-        //    t2.Start();
-        //}
+            //Thread t2 = new Thread(new ThreadStart(objWorkerClass.DoSomeWork));
+            ////Start the first thread
+            //t1.Start();
+            ////Start the second thread
+            //t2.Start();
+
+            try
+            {
+                Thread t3 = new Thread(new ThreadStart(objWorkerClass.DoSomeWorkWithAbortException));
+                t3.Start();
+                Console.WriteLine("DoSomeWorkWithAbortException has been called from the Main function");
+                
+                Thread.Sleep(3000); // sleeping for some time so that the thread can finish executing. If it has thread.abort has not effect not it.
+                t3.Abort(); // aborting the thread calls the thread abort exception on the thread
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
         public class EntryPoint
         {
             public static void ThreadFunc1()
@@ -67,19 +83,19 @@ namespace ThreadingConsoleApplication
 
         static AutoResetEvent autoEvent = new AutoResetEvent(true);
 
-        static void Main()
-        {
-            Console.WriteLine("Main starting.");
+        //static void Main()
+        //{
+        //    Console.WriteLine("Main starting.");
 
-            ThreadPool.QueueUserWorkItem(
-                new WaitCallback(WorkMethod), autoEvent);
+        //    ThreadPool.QueueUserWorkItem(
+        //        new WaitCallback(WorkMethod), autoEvent);
 
-            // Wait for work method to signal.
-             bool b = autoEvent.WaitOne();
-             Console.WriteLine(b.ToString());
-            Console.WriteLine("Work method signaled.\nMain ending.");
-            Thread.Sleep(10000);
-        }
+        //    // Wait for work method to signal.
+        //     bool b = autoEvent.WaitOne();
+        //     Console.WriteLine(b.ToString());
+        //    Console.WriteLine("Work method signaled.\nMain ending.");
+        //    Thread.Sleep(10000);
+        //}
 
         static void WorkMethod(object stateInfo)
         {

@@ -37,7 +37,7 @@
     }
 </script>
 
-<script id="shader-vs" type="x-shader/x-vertex">
+    <script id="shader-vs" type="x-shader/x-vertex">
     attribute vec3 aVertexPosition;
 
     uniform mat4 uMVMatrix;
@@ -47,8 +47,30 @@
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
     }
 </script>
+
 </head>
     <body>
+        <div>
+            <div>
+                <h1>Displaying an image on to Canvas</h1>
+            </div>
+            <div>
+                <div id="page-wrapper">
+
+                    <!--<h1>Text File Reader</h1>-->
+                    <div>
+                        Upload a file to display:<br/><br/>
+                        <input type="file" id="fileInput"/>
+                    </div>
+                    <pre id="fileDisplayArea"></pre>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="canvas">
+                <canvas id="canvas1" width="512" height="512" style="border: 1px black solid"></canvas>
+            </div>
+        </div>
         <div>
             <div class="sampleImg">
                 <canvas id="myCanvas" width="500" height="500" style="border: 1px solid black; background-color: red"></canvas>
@@ -63,7 +85,7 @@
     </body>
     <script>
         $(document).ready(function() {
-            DisplayLossyImage();
+            //DisplayLossyImage();
             //webGLStart();
         });
     </script>

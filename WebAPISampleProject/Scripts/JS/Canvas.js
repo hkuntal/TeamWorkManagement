@@ -324,7 +324,6 @@ function calculateLookup(bits) {
             ylookup[inputValue] = Math.round(y);
         }
     }
-
 }
 //function readImg() {
 //    pixelBuffer = processPixels(pixelData);

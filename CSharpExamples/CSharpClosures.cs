@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics.Contracts;
 
-namespace CSharpExamples
+namespace WebApiServicesClient
 {
     //This is to test if the closure concept applies the C# the way it applies in Javascript
     class School

@@ -38,8 +38,19 @@
     <AssemblyOriginatorKeyFile>HSK.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GEHealthcare.Isip.Dicom, Version=2.4.0.0, Culture=neutral, PublicKeyToken=18853031dd9e6d9c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\$Perforce\ZFP_12Jan2014_HCU-9QPGLX1\NGI\PRDS\UView-ZFP\INT\ZFP\sharedLib\Core\3.5\GEHealthcare.Isip.Dicom.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,11 +62,58 @@
     <Compile Include="CSharpClosures.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\AddConditionRequest.cs" />
+    <Compile Include="Request\CategoryValueRequest.cs" />
+    <Compile Include="Request\DeleteConditionRequest.cs" />
+    <Compile Include="Request\NewCategoryRequest.cs" />
+    <Compile Include="Request\PatientDataRequest.cs" />
+    <Compile Include="Request\PatientHistoryRequest.cs" />
+    <Compile Include="Request\PdqRequest.cs" />
+    <Compile Include="Request\RemoveAllTagsRequest.cs" />
+    <Compile Include="Request\StudySearchRequest.cs" />
+    <Compile Include="Request\TagRequest.cs" />
+    <Compile Include="Request\UserConditionRequest.cs" />
+    <Compile Include="Response\StoredQueryResponse.cs" />
     <Compile Include="StaticClass.cs" />
+    <Compile Include="Types\AcknowledgmentCode.cs" />
+    <Compile Include="Types\Address.cs" />
+    <Compile Include="Types\AppMode.cs" />
+    <Compile Include="Types\AssigningAuthority.cs" />
+    <Compile Include="Types\AuditActionType.cs" />
+    <Compile Include="Types\ClientCondition.cs" />
+    <Compile Include="Types\ClientConditionRule.cs" />
+    <Compile Include="Types\DocumentIdentifier.cs" />
+    <Compile Include="Types\ExamCkeyStudyUid.cs" />
+    <Compile Include="Types\ExamNote.cs" />
+    <Compile Include="Types\ExamReport.cs" />
+    <Compile Include="Types\ExamStatusLookup.cs" />
+    <Compile Include="Types\Gender.cs" />
+    <Compile Include="Types\HD.cs" />
+    <Compile Include="Types\Identifier.cs" />
+    <Compile Include="Types\InstitutionName.cs" />
+    <Compile Include="Types\NioModality.cs" />
+    <Compile Include="Types\OpenApiCmd.cs" />
+    <Compile Include="Types\Patient.cs" />
+    <Compile Include="Types\PatientRef.cs" />
+    <Compile Include="Types\PersonName.cs" />
+    <Compile Include="Types\QueryResponseStatus.cs" />
+    <Compile Include="Types\ReferenceId.cs" />
+    <Compile Include="Types\RegistryMetadata.cs" />
+    <Compile Include="Types\RequestedImageType.cs" />
+    <Compile Include="Types\SourcePatientInfo.cs" />
+    <Compile Include="Types\StudySearchQuery.cs" />
+    <Compile Include="Types\Tag.cs" />
+    <Compile Include="Types\UserGroupInfo.cs" />
+    <Compile Include="Types\UserInfo.cs" />
+    <Compile Include="Types\WorkList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="HSK.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Types\PatientHistory\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

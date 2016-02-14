@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CSharpExamplesToBeUnitTested;
@@ -60,6 +61,20 @@ namespace TestingSmallStuff
             CSharpExamplesToBeUnitTested.Child obj = new Child(5);
             
         }
+        [TestMethod]
+        public void TestArrayIListConversion()
+        {
+            // Test to see if Arrays can be used as lists
+            var p1 = new Person {FirstName = "h", LastName = "k"};
+            var p2 = new Person {FirstName = "k", LastName = "m"};
+            var p3 = new Person { FirstName = "k", LastName = "m" };
+            var arr = new[]{p1,p2};
+
+            IList<Person> lst = arr;
+            lst.Add(p3);
+
+        }
+
         
     }
 }
