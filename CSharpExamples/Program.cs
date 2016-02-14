@@ -10,8 +10,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
 using System.Web.Script.Serialization;
-using GEHealthcare.ZFP.Model.Request;
-using GEHealthcare.ZFP.Model.Types;
 
 namespace WebApiServicesClient
 {
@@ -56,73 +54,7 @@ namespace WebApiServicesClient
                }
             }
         }
-        private static void CallWebMethods()
-        {
-            using (var client = new HttpClient())
-            {
-                // New code:
-                //client.BaseAddress = new Uri("http://localhost/ZFPConverge/Dicom/StudySearch/QueryStudyList");
-                //client.DefaultRequestHeaders.Accept.Clear();
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var patientHistoryRequest = new PatientHistoryRequest
-                    {
-                        PrimaryStudyInstanceUid = "1.2.528.1.1001.1.960113006.200.2.19960306.125615749",
-                        PatientRef = new PatientRef
-                            {
-                                PatientName = "Ill^Very",
-                                PatientId = "1000026000",
-                                AuthorityShortCode = "SYS_A"
-                            },
-                            WorkListType = WorkListType.All,
-                        ApplicationMode = AppMode.StandAloneLaunch
-                    };
-
-                //const string url = "http://localhost/ZFPConverge/Dicom/StudySearch/GetPatientHistoryForNavigator";
-                const string url = "http://3.232.167.176/ZFP.Services/ZfpServices/Dicom/StudySearch/GetPatientHistoryForNavigator";
-                var webReq = System.Net.WebRequest.Create(url);
-                webReq.Method = "POST";
-                webReq.ContentType = "application/json; charset=utf-8";
-
-                //var ser = new DataContractJsonSerializer(patientHistoryRequest.GetType());
-                var writer = new StreamWriter(webReq.GetRequestStream());
-
-                var jss = new JavaScriptSerializer();
-                string rdata = jss.Serialize(patientHistoryRequest);
-                Console.WriteLine("RequestData: " + rdata);
-                writer.Write(rdata);
-                writer.Close();
-
-                var response = webReq.GetResponse();
-// ReSharper disable AssignNullToNotNullAttribute
-                var streamReader = new StreamReader(stream: response.GetResponseStream());
-// ReSharper restore AssignNullToNotNullAttribute
-                string apiData = streamReader.ReadToEnd(); // Gives you the Jason data
-                // Deserialize the data in to the object
-                Console.WriteLine("ResponseData: "+ apiData);
-                
-                //webReq.Headers.Add("URL", "http://localhost:13381/IntegrationCheck/Default.aspx");
-                //System.Net.WebResponse webResp = webReq.GetResponse();
-                //System.IO.StreamReader sr = new System.IO.StreamReader(webResp.GetResponseStream());
-                //string s = sr.ReadToEnd().Trim();
-
-
-                //response = await client.PostAsJsonAsync("api/products", patientHistoryRequest);
-                //if (response.IsSuccessStatusCode)
-                //{
-                //    // Get the URI of the created resource.
-                //    Uri gizmoUrl = response.Headers.Location;
-                //}
-                //HttpWebRequest request = WebRequest.Create("http://localhost/ZFPConverge/Dicom/StudySearch/QueryStudyList") as HttpWebRequest;
-                ////optional
-                //request.Method = "POST";
-
-                //HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-                //Stream stream = response.GetResponseStream();
-
-
-            }
-        }
+        
         private static void CheckStaticMethods()
         {
             Console.WriteLine("Trying to access static members");
