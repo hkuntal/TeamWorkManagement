@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+            .canvasDiv {
+                display: inline-block;
+                vertical-align: top;
+            }
+            .rightDiv {
+                float: right;
+            }
+        </style>
+    
+</head>
+    <body>
+        <div>
+            <div>
+                This app will help you load and Play (may be) Lossy Cine
+            </div>
+            <div class="canvasDiv rightDiv">
+                <canvas id="canvas1" height="400" width="400" style="border:1px solid black"></canvas>
+                <canvas id="canvas2" height="400" width="400" style="border:1px solid black"></canvas>
+            </div>
+            <div>
+                <div>
+                    <!--<button onclick="loadCine()">Load 1 Frame</button>-->
+                    <button onclick="loadCineInLoop1()">Load Cine Three Times</button>
+                    <!--<button onclick="loadCineInLoop2()">Load Cine 2 in a Loop</button>-->
+                    <button onclick="checkResponsiveness()">Click on me to check responsiveness</button>
+                </div>
+                <div>
+                    <textarea id="myTextarea1" style="border: 1px solid black" rows="500" columns="400"></textarea>
+                    <textarea id="myTextarea2" style="border: 1px solid black" rows="500" columns="400"></textarea>
+                </div>
+                <!--<img id="image1" height="500" width="500"/>-->
+            </div>
+        </div>
+
+    </body>
+    <script src="Javascript/LoadLossyCine.js"></script>
+</html>

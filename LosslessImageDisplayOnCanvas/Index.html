@@ -10,22 +10,36 @@
     <body>
         <div>
             <div>
-                Hi with this app you can window level on a lossless image
+                <b>Sample Image Rendering App</b>
             </div>
             <div class="canvasDiv">
                 <canvas id="canvas1" height="800" width="800" style="border:1px solid black" onmousedown="mouseDownEvent(event)" onmouseup="mouseUpEvent()" ></canvas>
+                <span id="counter"></span>
             </div>
             <div id="outputLog" class="canvasDiv">
-                Hey
+                
             </div>
             <div>
                 <input type="file" id="files" name="files[]" multiple />
                 <output id="list"></output>
             </div>
             <div>
+                <div>
+                    <label>Enter the number of times to display the image repeatedly</label>
+                    <input type="text" id="noOfTimes"/>
+                </div>
+                <div>
+                    <label>Enter the freuqency of display (images/sec)</label>
+                    <input type="text" id="frequency"/>
+                </div>
+            </div>
+            <div>
                 <button id="displayImage" onclick="drawImage()">Display Image</button>
             </div>
         </div>
+        <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
         <script src="Javascript/LoadImage.js"></script>
+        <script src="Javascript/LookupTable.js"></script>
+        <script src="Javascript/ImageUtilities.js"></script>
     </body>
 </html>
